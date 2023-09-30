@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_Cafe_System.Views"
         mc:Ignorable="d"
-        Title="WindowMenuOrders" Height="450" Width="800">
-    <Grid>
+        Title="WindowMenuOrders" Height="450" Width="700">
+    <Grid ShowGridLines="True" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        
         
     </Grid>
 </Window>
