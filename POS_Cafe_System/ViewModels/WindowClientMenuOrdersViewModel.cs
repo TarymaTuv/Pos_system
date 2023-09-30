@@ -29,7 +29,7 @@ namespace POS_Cafe_System.ViewModels
             AddInOrder = new RelayCommand(o=>
             {
                 OrderItems.Add((Items[SelectedItem]));
-                Console.WriteLine("ADD");
+                PriceOrder = (Items[SelectedItem].Price).ToString();
             });
             ReduceCount = new RelayCommand(o=>
             {
@@ -38,6 +38,7 @@ namespace POS_Cafe_System.ViewModels
                 if (OrderItems[SelectedOrderItems].Count == 0)
                 {
                     OrderItems.Remove(OrderItems[SelectedOrderItems]);
+                    PriceOrder = (Items[SelectedItem].Price * Items[SelectedItem].Count).ToString();
                 }
             });
             AddCount= new RelayCommand(o=>
@@ -55,8 +56,10 @@ namespace POS_Cafe_System.ViewModels
         public List<ItemOrder> Items { get; set; }// то что может заказать клиент
 
         [Reactive]
-        public int SelectedItem { get; set; }// то что может заказать клиент, выбранный предмет
+        public int SelectedItem { get; set; } = 0;  // то что может заказать клиент, выбранный предмет
         [Reactive]
-        public int SelectedOrderItems { get; set; }// то что будет в корзине, выбранный предмет
+        public int SelectedOrderItems { get; set; } = 0;// то что будет в корзине, выбранный предмет
+        [Reactive]
+        public string PriceOrder { get; set; } = "0";
     }
 }
