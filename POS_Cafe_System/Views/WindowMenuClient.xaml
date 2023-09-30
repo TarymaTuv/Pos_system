@@ -19,7 +19,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Button Style="{DynamicResource btnStyleTransparent}">
+                        <Button Style="{StaticResource btnStyleTransparent}">
                             <TextBlock Text="{TemplateBinding Content}" Style="{DynamicResource tblStyle}"/>
                         </Button>
                     </ControlTemplate>
@@ -41,25 +41,35 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="50"/>
                             </Grid.RowDefinitions>
 
-                            <Image Source="{Binding Image}"/>
-                            <TextBlock Style="{DynamicResource tblStyle}" 
-                                       Text="{Binding Price}"
-                                       Foreground="Black"
-                                       Grid.Row="1"/>
+                            <Image Source="{Binding Image}" Grid.Row="0"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Background="Red">
+                                <TextBlock Style="{DynamicResource tblStyle}"
+                                           Text="{Binding Name}"
+                                           Foreground="Black"
+                                           VerticalAlignment="Top"/>
+                                <TextBlock Style="{DynamicResource tblStyle}" 
+                                           Text="{Binding Price}"
+                                           Foreground="Black"
+                                           VerticalAlignment="Top"
+                                           HorizontalAlignment="Right"
+                                           TextAlignment="Right"/>
+                            </StackPanel>
+
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Setter Property="Margin" Value="15"/>
-            <!--            
             <Setter Property="Width" Value="235"/>
             <Setter Property="Height" Value="235"/>
-            -->
 
         </Style>
     </Window.Resources>
@@ -90,7 +100,7 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Style="{StaticResource Item}"/>
+                    <Button Style="{DynamicResource Item}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
