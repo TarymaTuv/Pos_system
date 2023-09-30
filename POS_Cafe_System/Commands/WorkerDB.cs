@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using POS_Cafe_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,11 @@ namespace POS_Cafe_System.Commands
 {
     public static class WorkerDB
     {
-        static string _connectionString = "Data Source = " + Environment.CurrentDirectory + "Resources/CafeDB";       
+        static string _connectionString = "Data Source = " + Environment.CurrentDirectory + "Resources/CafeDB";//строка подключения к бд
+        /// <summary>
+        /// Проверка подключения к БД
+        /// </summary>
+        /// <returns></returns>
         public static bool IsConnect()
         {
             try
@@ -21,6 +26,28 @@ namespace POS_Cafe_System.Commands
             {
                 return false;
             }
+        }
+        /// <summary>
+        /// Считывание предметов(еды), которые участвуют в заказе
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<OrderItem> OrderItems()
+        {
+            List<OrderItem> items = new List<OrderItem>();
+            string sqlliteQuery = "select * from Items;";
+            using (SqliteConnection connection = new SqliteConnection(_connectionString))
+            {
+                connection.Open();
+                SqliteCommand command = new SqliteCommand(sqlliteQuery, connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    int id = (int)reader["Id"];
+                    string name = (string)reader["Name"];
+                    byte[]image = (byte[])reader["Image"];
+                }
+            }
+
+            return items;
         }
     }
 }

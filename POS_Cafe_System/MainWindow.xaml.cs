@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS_Cafe_System.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,6 @@ namespace POS_Cafe_System
         public MainWindow()
         {
             InitializeComponent();
-        }
+        }        
     }
 }
