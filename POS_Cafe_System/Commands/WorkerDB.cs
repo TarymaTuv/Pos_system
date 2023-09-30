@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Data.SQLite;
 using POS_Cafe_System.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace POS_Cafe_System.Commands
 {
     public static class WorkerDB
     {
-        static string _connectionString = "Data Source = " + Environment.CurrentDirectory + "Resources/CafeDB";//строка подключения к бд
+        static string _connectionString = "Data Source = C:\\Users\\User\\source\\repos\\POS_Cafe_System\\POS_Cafe_System\\Resources\\CafeDB.db";//строка подключения к бд
         /// <summary>
         /// Проверка подключения к БД
         /// </summary>
@@ -19,7 +19,7 @@ namespace POS_Cafe_System.Commands
         {
             try
             {
-                SqliteConnection connect = new SqliteConnection(_connectionString);
+                SQLiteConnection connect = new SQLiteConnection(_connectionString);
                 return true;
             }
             catch
@@ -35,18 +35,22 @@ namespace POS_Cafe_System.Commands
         {
             List<ItemOrder> items = new List<ItemOrder>();
             string sqlliteQuery = "select * from Items;";
-            using (SqliteConnection connection = new SqliteConnection(_connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                SqliteCommand command = new SqliteCommand(sqlliteQuery, connection);
-                using (SqliteDataReader reader = command.ExecuteReader())
+                SQLiteCommand command = new SQLiteCommand(sqlliteQuery, connection);
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-                    int id = (int)reader["Id"];
-                    string name = (string)reader["Name"];
-                    byte[]image = (byte[])reader["Image"];
-                    double price = (double)reader["Price"];
-                    ItemOrder item = new ItemOrder(id, name, price, image);
-                    items.Add(item);
+                    while(reader.Read())
+                    {
+                        int id = (int)reader.GetValue(0);
+                        string name = (string)reader.GetValue(1);
+                        byte[] image = (byte[])reader.GetValue(2);
+                        double price = (double)reader.GetValue(3);
+
+                        ItemOrder item = new ItemOrder(id, name, price, image);
+                        items.Add(item);
+                    }
                 }
             }
             return items;

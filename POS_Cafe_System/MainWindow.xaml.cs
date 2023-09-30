@@ -24,6 +24,7 @@ namespace POS_Cafe_System
         public MainWindow()
         {
             InitializeComponent();
+            Views.WindowMenuOrders windowClien = new Views.WindowMenuOrders();
         }        
     }
 }
