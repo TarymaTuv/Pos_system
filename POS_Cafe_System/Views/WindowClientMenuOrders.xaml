@@ -5,15 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_Cafe_System.Views"
         mc:Ignorable="d"
-        Title="WindowMenuOrders" Height="450" Width="700">
-    <Grid ShowGridLines="True" >
+        Title="Меню заказов" Height="450" Width="700">
+    <Window.Resources>
+        <Style x:Key="btnStyle">
+            <Setter Property="Button.Content">
+                <Setter.Value>
+                    <TextBlock>
+						fsdsd
+                        <TextBlock.Style>
+                            <Style>
+                                <Setter Property="TextBlock.FontFamily" Value="Britannic Bold"/>
+                                <Setter Property="TextBlock.FontSize" Value="16"/>
+                                <Setter Property="TextBlock.Text" Value="{Binding Content}"/>
+								<Setter Property="TextBlock.Foreground" Value="#FFCA8504"/>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+    </Window.Resources>
+
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        
+
+
+
+        <StackPanel Grid.Row="1">
+            <Button Style="{StaticResource btnStyle}" Content="Бургеры"/>
+            <Button Style="{StaticResource btnStyle}" Content="Картошка-фри"/>
+            <Button Style="{StaticResource btnStyle}" Content="Соусы"/>
+            <Button Style="{StaticResource btnStyle}" Content="Напитки"/>
+        </StackPanel>
+
+
     </Grid>
 </Window>
