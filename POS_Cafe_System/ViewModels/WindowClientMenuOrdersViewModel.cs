@@ -19,10 +19,17 @@ namespace POS_Cafe_System.ViewModels
         {
             Items = new List<ItemOrder>();
             Items.AddRange(WorkerDB.OrderItems());
-            Console.WriteLine("ItemCount: " + Items.Count);
-            //тут сделать создание заказа и его отправление в другое окно
+
+            //создание и отправление заказа в базу данных
             CreateOrder = new RelayCommand(o=>
             {
+                List<ItemOrder> items = new List<ItemOrder>();
+                items.AddRange(OrderItems);
+
+                Order order = new Order(items);
+                order.Price = double.Parse(PriceOrder);
+
+                //тут сделать его отправление в бд
 
             });
             //у клиента есть корзина(заказ) куда он будет добавлять предметы, этот метод будет у всех предметов в списке
@@ -60,6 +67,6 @@ namespace POS_Cafe_System.ViewModels
         [Reactive]
         public int SelectedOrderItems { get; set; } = 0;// то что будет в корзине, выбранный предмет
         [Reactive]
-        public string PriceOrder { get; set; } = "0";
+        public string PriceOrder { get; set; } = "0"; //цена заказа
     }
 }
