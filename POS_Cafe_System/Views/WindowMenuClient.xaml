@@ -36,7 +36,7 @@
         </Style>
         
         <!-- "Плитка" продукта -->
-        <Style x:Key="Item" TargetType="ItemsControl">
+        <Style x:Key="Item" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
@@ -82,13 +82,18 @@
             <Button Style="{StaticResource btnStyle}" Content="Напитки"/>
         </StackPanel>
 
-        <ItemsControl Grid.Column="1" ItemsSource="{Binding Items}" Style="{StaticResource Item}">
-            <ItemsControl.ItemsPanel>
+        <ListBox Grid.Column="1" ItemsSource="{Binding Items}" BorderThickness="0">
+            <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel ItemHeight="235" ItemWidth="235" IsItemsHost="True"/>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Style="{StaticResource Item}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
 
