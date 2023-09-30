@@ -10,6 +10,7 @@ namespace POS_Cafe_System.Models
     public class ItemOrder
     {
         public int Id { get; set; }
+        public int Count { get; set; } = 0;
         public string Name { get; set; }
         public byte[] ImageBytes { get; set; }
         public double Price { get; set; }

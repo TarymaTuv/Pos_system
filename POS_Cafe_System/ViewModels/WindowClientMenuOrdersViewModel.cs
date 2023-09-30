@@ -27,21 +27,21 @@ namespace POS_Cafe_System.ViewModels
             //у клиента есть корзина(заказ) куда он будет добавлять предметы, этот метод будет у всех предметов в списке
             AddInOrder = new RelayCommand(o=>
             {
-                OrderItems.OrderItems.Add((Items[SelectedItem], 1));
+                OrderItems.Add((Items[SelectedItem]));
                 Console.WriteLine("ADD");
             });
             ReduceCount = new RelayCommand(o=>
             {
-                OrderItems.OrderItems[SelectedOrderItems] = (OrderItems.OrderItems[SelectedOrderItems].item, OrderItems.OrderItems[SelectedOrderItems].count - 1); //уменьшение количества выбранного товара в корзине
+                OrderItems[SelectedOrderItems].Count -= 1; //уменьшение количества выбранного товара в корзине
                 //если его кол-во = 0, то его надо убрать из корзины
-                if (OrderItems.OrderItems[SelectedOrderItems].count == 0)
+                if (OrderItems[SelectedOrderItems].Count == 0)
                 {
-                    OrderItems.OrderItems.Remove(OrderItems.OrderItems[SelectedOrderItems]);
+                    OrderItems.Remove(OrderItems[SelectedOrderItems]);
                 }
             });
             AddCount= new RelayCommand(o=>
             {
-                OrderItems.OrderItems[SelectedOrderItems] = (OrderItems.OrderItems[SelectedOrderItems].item, OrderItems.OrderItems[SelectedOrderItems].count + 1);//увеличение количества выбранного товара в корзине
+                OrderItems[SelectedOrderItems].Count += 1;//увеличение количества выбранного товара в корзине
             });
         }
         public ICommand CreateOrder { get; set; }
@@ -49,7 +49,7 @@ namespace POS_Cafe_System.ViewModels
         public ICommand AddCount { get; set; }
         public ICommand ReduceCount { get; set; }
         [Reactive]
-        public Order OrderItems { get; set; } = new Order(new List<(ItemOrder item, int count)>()); // то что будет в корзине
+        public List<ItemOrder> OrderItems { get; set; } = new List<ItemOrder>(); // то что будет в корзине
         [Reactive]
         public List<ItemOrder> Items { get; set; }// то что может заказать клиент
 
