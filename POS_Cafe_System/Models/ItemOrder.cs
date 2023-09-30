@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace POS_Cafe_System.Models
 {
-    public class OrderItem
+    public class ItemOrder
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace POS_Cafe_System.Models
         public double Price { get; set; }
         public Bitmap Image { get; set; }
 
-        public OrderItem(int id, string name, double price, Bitmap image)
+        public ItemOrder(int id, string name, double price, Bitmap image)
         {
             Id = id;
             Name = name;
@@ -23,7 +23,7 @@ namespace POS_Cafe_System.Models
             Image = image;
             ImageBytes = POS_Cafe_System.Commands.ImageConverter.BytesFromImage(image);
         }
-        public OrderItem(int id, string name, double price, byte[] imageBytes)
+        public ItemOrder(int id, string name, double price, byte[] imageBytes)
         {
             Id = id;
             Name = name;
