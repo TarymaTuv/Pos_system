@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
 using System.Text;
@@ -49,7 +50,7 @@ namespace POS_Cafe_System.ViewModels
         public ICommand AddCount { get; set; }
         public ICommand ReduceCount { get; set; }
         [Reactive]
-        public List<ItemOrder> OrderItems { get; set; } = new List<ItemOrder>(); // то что будет в корзине
+        public ObservableCollection<ItemOrder> OrderItems { get; set; } = new ObservableCollection<ItemOrder>(); // то что будет в корзине
         [Reactive]
         public List<ItemOrder> Items { get; set; }// то что может заказать клиент
 
