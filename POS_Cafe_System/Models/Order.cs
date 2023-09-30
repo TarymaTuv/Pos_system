@@ -17,15 +17,6 @@ namespace POS_Cafe_System.Models
         public List<(ItemOrder item, int count)> OrderItems { get; set; } = new List<(ItemOrder item, int count)>();
         public Order(List<(ItemOrder item, int count)> items)
         {
-            this.WhenAnyValue(x => x.OrderItems).Subscribe(x =>
-            {
-                Price = 0;
-                foreach (var item in OrderItems)
-                {
-                    Price += item.item.Price * item.count;
-                }
-            });
-
             OrderItems = items;
             staticID++;
         }

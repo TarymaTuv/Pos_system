@@ -119,6 +119,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\ImageConverter.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\WorkerDB.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ItemOrder.cs" />
@@ -176,6 +177,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

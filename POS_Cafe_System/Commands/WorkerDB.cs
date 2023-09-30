@@ -43,7 +43,7 @@ namespace POS_Cafe_System.Commands
                 {
                     while(reader.Read())
                     {
-                        int id = (int)reader.GetValue(0);
+                        int id = (int)reader.GetInt32(0);
                         string name = (string)reader.GetValue(1);
                         byte[] image = (byte[])reader.GetValue(2);
                         double price = (double)reader.GetValue(3);
