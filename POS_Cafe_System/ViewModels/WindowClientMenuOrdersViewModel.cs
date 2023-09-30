@@ -13,6 +13,7 @@ namespace POS_Cafe_System.ViewModels
     {
         public WindowClientMenuOrdersViewModel()
         {
+            //тут сделать создание заказа и его отправление в другое окно
             CreateOrder = ReactiveCommand.Create(() =>
             {
 
