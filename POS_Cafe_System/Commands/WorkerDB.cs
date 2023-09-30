@@ -31,9 +31,9 @@ namespace POS_Cafe_System.Commands
         /// Считывание предметов(еды), которые участвуют в заказе
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<OrderItem> OrderItems()
+        public static IEnumerable<ItemOrder> OrderItems()
         {
-            List<OrderItem> items = new List<OrderItem>();
+            List<ItemOrder> items = new List<ItemOrder>();
             string sqlliteQuery = "select * from Items;";
             using (SqliteConnection connection = new SqliteConnection(_connectionString))
             {
@@ -44,10 +44,13 @@ namespace POS_Cafe_System.Commands
                     int id = (int)reader["Id"];
                     string name = (string)reader["Name"];
                     byte[]image = (byte[])reader["Image"];
+                    double price = (double)reader["Price"];
+                    ItemOrder item = new ItemOrder(id, name, price, image);
+                    items.Add(item);
                 }
             }
-
             return items;
         }
+
     }
 }

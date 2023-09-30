@@ -101,7 +101,7 @@
     <Compile Include="Commands\ImageConverter.cs" />
     <Compile Include="Commands\WorkerDB.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\ItemOrder.cs" />
     <Compile Include="ViewModels\WindowClientMenuOrdersViewModel.cs" />
     <Compile Include="ViewModels\WindowEmployeeMenuOrdersViewModel.cs" />
     <Compile Include="ViewModels\WindowReadinessOrderViewModel.cs" />
