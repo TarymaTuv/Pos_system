@@ -10,7 +10,7 @@ namespace POS_Cafe_System.Commands
 {
     public static class WorkerDB
     {
-        static string _connectionString = "Data Source = C:\\Users\\User\\source\\repos\\POS_Cafe_System\\POS_Cafe_System\\Resources\\CafeDB.db";//строка подключения к бд
+        static string _connectionString = "Data Source = C:\\Users\\VshivayaGnida\\source\\repos\\POS_Cafe_System\\POS_Cafe_System\\Resources\\CafeDB.db";//строка подключения к бд
         /// <summary>
         /// Проверка подключения к БД
         /// </summary>

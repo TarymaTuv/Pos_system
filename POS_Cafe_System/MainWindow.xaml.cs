@@ -1,4 +1,5 @@
 ﻿using POS_Cafe_System.Commands;
+using POS_Cafe_System.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,8 @@ namespace POS_Cafe_System
         public MainWindow()
         {
             InitializeComponent();
-            Views.WindowMenuOrders windowClien = new Views.WindowMenuOrders();
+            new WindowMenuOrders().Show();
+            this.Close();
         }        
     }
 }

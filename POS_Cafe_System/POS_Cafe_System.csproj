@@ -125,8 +125,8 @@
     <Compile Include="ViewModels\WindowClientMenuOrdersViewModel.cs" />
     <Compile Include="ViewModels\WindowEmployeeMenuOrdersViewModel.cs" />
     <Compile Include="ViewModels\WindowReadinessOrderViewModel.cs" />
-    <Compile Include="Views\WindowClientMenuOrders.xaml.cs">
-      <DependentUpon>WindowClientMenuOrders.xaml</DependentUpon>
+    <Compile Include="Views\WindowMenuClient.xaml.cs">
+      <DependentUpon>WindowMenuClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WindowEmployeeMenuOrders.xaml.cs">
       <DependentUpon>WindowEmployeeMenuOrders.xaml</DependentUpon>
@@ -146,7 +146,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\WindowClientMenuOrders.xaml">
+    <Page Include="Views\WindowMenuClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
