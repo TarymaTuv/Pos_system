@@ -25,7 +25,7 @@ namespace POS_Cafe_System.ViewModels
             //создание и отправление заказа в базу данных
             CreateOrder = new RelayCommand(o=>
             {
-                Console.WriteLine("work");
+                Console.WriteLine("workI");
                 List<ItemOrder> items = new List<ItemOrder>();
                 items.AddRange(OrderItems);
 
@@ -45,6 +45,7 @@ namespace POS_Cafe_System.ViewModels
             {
                 if (SelectedOrderItems >= 0)
                 {
+
                     OrderItems[SelectedOrderItems].Count -= 1; //уменьшение количества выбранного товара в корзине
                                                                //если его кол-во = 0, то его надо убрать из корзины
                     if (OrderItems[SelectedOrderItems].Count == 0)
@@ -109,6 +110,8 @@ namespace POS_Cafe_System.ViewModels
                 Add();
             }
         }
+
+
         [Reactive]
         public int SelectedOrderItems { get; set; } = 0;// то что будет в корзине, выбранный предмет
         [Reactive]

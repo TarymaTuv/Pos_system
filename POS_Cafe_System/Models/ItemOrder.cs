@@ -13,7 +13,7 @@ namespace POS_Cafe_System.Models
     {
         public int Id { get; set; }
         [Reactive]
-        public bool IsSelected { get; set; } = false;
+        public bool IsSelected { get ; set; } = false;
         [Reactive]
         public int Count { get; set; } = 0;
         public string Name { get; set; }

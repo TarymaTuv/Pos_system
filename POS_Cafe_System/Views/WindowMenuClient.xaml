@@ -35,6 +35,7 @@
             <Setter Property="Foreground" Value="Orange"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -63,20 +64,16 @@
                  SelectedIndex="{Binding SelectedItem}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True"/>
+                    <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
+            
 
-            <ListBoxItem IsSelected="{Binding IsSelected}"/>
 
             <ListBox.ItemTemplate>
-
                 <!-- "Плитка" продукта -->
-                <ItemContainerTemplate>
+                <DataTemplate>
                     <Grid>
-
-
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
@@ -103,7 +100,7 @@
 
 
                     </Grid>
-                </ItemContainerTemplate>
+                </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
@@ -131,8 +128,8 @@
                                         Background="Green" Content="+" 
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                         Margin="10" DockPanel.Dock="Right"
-                                        
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"/>
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}">
+                                </Button>
 
                                 <Button Background="Red" Content="-" 
                                         HorizontalAlignment="Right"
