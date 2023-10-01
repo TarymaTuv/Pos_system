@@ -55,7 +55,8 @@ namespace POS_Cafe_System.ViewModels
 
         private void Update(object sender, EventArgs e)
         {
-            Console.WriteLine("event time");
+            Orders.Clear();
+            Orders.AddRange(WorkerDB.ReadAllOrder());
         }
     }
 }
