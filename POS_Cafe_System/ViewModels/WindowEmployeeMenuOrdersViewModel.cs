@@ -29,19 +29,19 @@ namespace POS_Cafe_System.ViewModels
             Orders.AddRange(WorkerDB.ReadAllOrder());
 
 
-            Ready = new RelayCommand(o =>
+            Ready = new RelayCommand(param =>
             {
                 //отправляем в бд, что заказ готов
-                WorkerDB.ReadyOrder(Orders[SelectedItem].Id);
+                WorkerDB.ReadyOrder(Orders.Where(o => o.Id == param as string).First().Id);
             });
-            Pay = new RelayCommand(o =>
+            Pay = new RelayCommand(param =>
             {
                 Orders[SelectedItem].IsPay = true;
-                WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
+                WorkerDB.DeleteOrder(Orders.Where(o => o.Id == param as string).First().Id);
             });
-            DeleteOrder = new RelayCommand(o =>
+            DeleteOrder = new RelayCommand(param =>
             {
-                WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
+                WorkerDB.DeleteOrder(Orders.Where(o => o.Id == param as string).First().Id);
             });
         }
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
