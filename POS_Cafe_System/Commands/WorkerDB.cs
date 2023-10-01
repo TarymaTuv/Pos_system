@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO.Packaging;
+using System.Diagnostics;
 
 namespace POS_Cafe_System.Commands
 {
@@ -86,20 +87,21 @@ namespace POS_Cafe_System.Commands
                         //так как в бд хранятся id предмета и его кол-во, а также предметов много, делим строку на разделители(при записи это ; между разными предметами и пробелы между id и количеством)
                         string[] orderItems = ((string)reader["OrderItems"]).Split(';');
                         List< ItemOrder > itemsOrder = new List< ItemOrder >();
-                        /*
-                        foreach (var item in orderItems)
+                        
+                        for (int i = 0; i < orderItems.Length - 1; i++)
                         {
                             //парсим строку
-                            int idItem = int.Parse(item.Split(' ')[0]);
-                            int countItem = int.Parse(item.Split(' ')[1]);
+                            int idItem = int.Parse(orderItems[i].Split(' ')[0]);
+                            int countItem = int.Parse(orderItems[i].Split(' ')[1]);
 
-                            ItemOrder itemOrder = itemsOrder.Where(i => i.Id == idItem).First();
+                            ItemOrder itemOrder = _itemsOrder.Where(o => o.Id == idItem).First();
                             itemOrder.Count = countItem;
                             itemsOrder.Add(itemOrder);
                         }
-                        */
+
                         //создаем заказ
                         Order order = new Order(itemsOrder);
+                        Console.WriteLine(itemsOrder.Count + " Itemsss");
                         order.Id = id; 
                         order.IsPay = isPay;
                         order.IsReady = isReady;
