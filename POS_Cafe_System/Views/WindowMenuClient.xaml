@@ -70,6 +70,13 @@
 
                 <!-- "Плитка" продукта -->
                 <DataTemplate>
+                    <DataTemplate.Triggers>
+                        <EventTrigger RoutedEvent="DoubleClick">
+                            <EventTrigger.Actions>
+                                
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </DataTemplate.Triggers>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>

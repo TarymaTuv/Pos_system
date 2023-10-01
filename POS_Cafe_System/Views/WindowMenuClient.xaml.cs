@@ -25,5 +25,10 @@ namespace POS_Cafe_System.Views
             InitializeComponent();
             DataContext = new WindowClientMenuOrdersViewModel();
         }
+
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
