@@ -12,6 +12,7 @@
     <Border BorderThickness="20" BorderBrush="ForestGreen">
         <StackPanel>
             <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
+            <!-- Список заказов -->
             <ListBox ItemsSource="{Binding Orders}" SelectedIndex="{Binding SelectedItem}"
                  ScrollViewer.CanContentScroll="False"
                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -24,7 +25,9 @@
                                     <TextBlock Text="Номер заказа " Style="{StaticResource tblStyle}" Foreground="Black"/>
                                     <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}"/>
                                 </StackPanel>
-                                <ListBox ItemsSource="{Binding OrderItems}">
+                                <ListBox ItemsSource="{Binding OrderItems}" Height="200"
+                                         ScrollViewer.CanContentScroll="False"
+                                         ScrollViewer.VerticalScrollBarVisibility="Hidden">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel>

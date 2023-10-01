@@ -8,8 +8,8 @@
         Title="Меню заказов" Height="800" Width="1100"
         MinWidth="800" MinHeight="450">
 
-    <Border BorderThickness="20" BorderBrush="ForestGreen">
-        <Grid >
+    <Border BorderThickness="20" BorderBrush="ForestGreen" >
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="350"/>
@@ -22,7 +22,7 @@
 
 
             <!-- Плитки товаров -->
-            <ListBox Grid.Column="0" ItemsSource="{Binding Items}" BorderThickness="0"
+            <ListBox Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding Items}" BorderThickness="0"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
                  SelectedIndex="{Binding SelectedItem}">
@@ -76,32 +76,33 @@
                 </Grid.RowDefinitions>
 
                 <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False" Background="Transparent"/>
-                <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}" Background="Transparent">
+                <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}" Background="Transparent"
+                         ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="DockPanel">
                             <DockPanel LastChildFill="True">
                                 <StackPanel Width="150" Margin="5">
                                     <TextBlock Text="{Binding Name}"
-                                           Style="{StaticResource tblStyle}"/>
+                                               Style="{StaticResource tblStyle}"/>
                                     <TextBlock Text="{Binding Count}"
-                                           Style="{StaticResource tblStyle}"/>
+                                               Style="{StaticResource tblStyle}"/>
                                 </StackPanel>
                                 <DockPanel HorizontalAlignment="Right" Width="130">
                                     <Button x:Name="btnPlus"
-                                        Background="Green" Content="+"
-                                        FontSize="22" Foreground="White"
-                                        Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
-                                        Margin="10" DockPanel.Dock="Right"
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"
-                                        CommandParameter="{Binding Name}"/>
+                                            Background="Green" Content="+"
+                                            FontSize="22" Foreground="White"
+                                            Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
+                                            Margin="10" DockPanel.Dock="Right"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"
+                                            CommandParameter="{Binding Name}"/>
 
                                     <Button Background="Red" Content="-" 
-                                        HorizontalAlignment="Right"
-                                        Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
-                                        Margin="10" DockPanel.Dock="Right"
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"
-                                        CommandParameter="{Binding Name}"/>
+                                            HorizontalAlignment="Right"
+                                            Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
+                                            Margin="10" DockPanel.Dock="Right"
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"
+                                            CommandParameter="{Binding Name}"/>
                                 </DockPanel>
                             </DockPanel>
                         </DataTemplate>
@@ -119,6 +120,7 @@
                                            DockPanel.Dock="Right"
                                            Margin="10"/>
                 </DockPanel>
+                
             </Grid>
 
             <!-- Оформление заказа -->
