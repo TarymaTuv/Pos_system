@@ -28,6 +28,7 @@ namespace POS_Cafe_System.Models
             Price = price;
             Image = image;
             ImageBytes = POS_Cafe_System.Commands.ImageConverter.BytesFromImage(image);
+            Count = 0;
 
         }
         public ItemOrder(int id, string name, double price, byte[] imageBytes)
@@ -37,6 +38,7 @@ namespace POS_Cafe_System.Models
             Price = price;
             ImageBytes = imageBytes;
             Image = POS_Cafe_System.Commands.ImageConverter.ImageFromBytes(imageBytes);
+            Count = 0;
         }
     }
 }

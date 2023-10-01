@@ -82,7 +82,6 @@ namespace POS_Cafe_System.ViewModels
                 {
                     OrderItems.Add((Items[SelectedItem]));
                 }
-                Items[SelectedItem].Count++;
                 OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count += 1;
                 CalculatePrice();
             }
