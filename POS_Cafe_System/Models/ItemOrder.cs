@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace POS_Cafe_System.Models
 {
-    public class ItemOrder
+    public class ItemOrder:ReactiveObject
     {
         public int Id { get; set; }
+        [Reactive]
         public int Count { get; set; } = 0;
         public string Name { get; set; }
         public byte[] ImageBytes { get; set; }

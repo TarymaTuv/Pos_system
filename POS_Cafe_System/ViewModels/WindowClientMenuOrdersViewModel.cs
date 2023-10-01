@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using System.Text;
@@ -44,7 +45,6 @@ namespace POS_Cafe_System.ViewModels
                     }
                     Items[SelectedItem].Count++;
                     OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count = Items[SelectedItem].Count;
-                    Console.WriteLine(OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count);
                     CalculatePrice();
                 }
             });
@@ -84,8 +84,8 @@ namespace POS_Cafe_System.ViewModels
         public ICommand AddCount { get; set; }
         public ICommand ReduceCount { get; set; }
 
-        public ObservableCollection<ItemOrder> OrderItems { get; set; } = new ObservableCollection<ItemOrder>(); // то что будет в корзине
-        public ObservableCollection<ItemOrder> Items { get; set; } = new ObservableCollection<ItemOrder>(); // то что может заказать клиент
+        public BindingList<ItemOrder> OrderItems { get; set; } = new BindingList<ItemOrder>(); // то что будет в корзине
+        public BindingList<ItemOrder> Items { get; set; } = new BindingList<ItemOrder>(); // то что может заказать клиент
 
 
         [Reactive]
