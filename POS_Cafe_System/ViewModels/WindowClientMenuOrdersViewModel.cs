@@ -7,6 +7,7 @@ using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Linq;
 using DynamicData;
 using POS_Cafe_System.Commands;
 using POS_Cafe_System.Models;
@@ -41,28 +42,20 @@ namespace POS_Cafe_System.ViewModels
             {
                 Add();
             });
-            ReduceCount = new RelayCommand(o=>
+            ReduceCount = new RelayCommand(param =>
             {
-                if (SelectedOrderItems >= 0)
+                OrderItems.Where(o => o.Name == param as string).First().Count--; //уменьшение количества выбранного товара в корзине
+                                                                                  //если его кол-во = 0, то его надо убрать из корзины
+                if (OrderItems.Where(o => o.Name == param as string).First().Count == 0)
                 {
-
-                    OrderItems[SelectedOrderItems].Count -= 1; //уменьшение количества выбранного товара в корзине
-                                                               //если его кол-во = 0, то его надо убрать из корзины
-                    if (OrderItems[SelectedOrderItems].Count == 0)
-                    {
-                        OrderItems.Remove(OrderItems[SelectedOrderItems]);
-                        Items[SelectedItem].Count--;
-                        CalculatePrice();
-                    }
+                    OrderItems.Remove(OrderItems.Where(o => o.Name == param as string).First());
                 }
+                CalculatePrice();
             });
-            AddCount= new RelayCommand(o=>
+            AddCount= new RelayCommand(param =>
             {
-                if (SelectedOrderItems >= 0)
-                {
-                    OrderItems[SelectedOrderItems].Count += 1;//увеличение количества выбранного товара в корзине
-                    CalculatePrice();
-                }
+                OrderItems.Where(o => o.Name == param as string).First().Count++; //увеличение количества выбранного товара в корзине                                             
+                CalculatePrice();
             });
         }
         private void CalculatePrice()
