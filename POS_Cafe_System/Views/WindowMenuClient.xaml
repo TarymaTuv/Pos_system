@@ -66,15 +66,17 @@
                     <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
+
+            <ListBoxItem IsSelected="{Binding IsSelected}"/>
+
             <ListBox.ItemTemplate>
 
                 <!-- "Плитка" продукта -->
-                <DataTemplate>
+                <ItemContainerTemplate>
                     <Grid>
-                        <Grid.InputBindings>
-                            <MouseBinding MouseAction="LeftClick"
-                                   Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=AddInOrder }" />
-                        </Grid.InputBindings>
+
+
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
@@ -101,7 +103,7 @@
 
 
                     </Grid>
-                </DataTemplate>
+                </ItemContainerTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
