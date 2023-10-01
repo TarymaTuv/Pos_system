@@ -150,12 +150,14 @@ namespace POS_Cafe_System.Commands
                 connection.Open();
                 SQLiteCommand command = new SQLiteCommand(query, connection);
 
-                command.Parameters.AddWithValue("id", order.Id);
-                command.Parameters.AddWithValue("isReady", order.IsReady);
+                command.Parameters.AddWithValue("@id", order.Id);
+                command.Parameters.AddWithValue("@isReady", order.IsReady);
                 command.Parameters.AddWithValue("@isPay", order.IsPay);
-                command.Parameters.AddWithValue("price", order.Price);
-                command.Parameters.AddWithValue("orderItems", orderItemsString);
-                command.ExecuteNonQuery();
+                command.Parameters.AddWithValue("@price", order.Price);
+                command.Parameters.AddWithValue("@orderItems", orderItemsString); 
+                
+                int number = command.ExecuteNonQuery();
+                Console.WriteLine($"Добавлено объектов: {number}");
             }
 
             return true;
