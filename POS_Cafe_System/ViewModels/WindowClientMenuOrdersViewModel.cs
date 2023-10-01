@@ -31,7 +31,7 @@ namespace POS_Cafe_System.ViewModels
                 Order order = new Order(items);
                 order.Price = double.Parse(PriceOrder);
 
-                //тут сделать его отправление в бд
+                WorkerDB.AddOrder(order);
 
             });
             //у клиента есть корзина(заказ) куда он будет добавлять предметы, этот метод будет у всех предметов в списке
