@@ -8,85 +8,87 @@
         Title="Меню заказов" Height="800" Width="1100"
         MinWidth="800" MinHeight="450">
 
-    <Grid Margin="20">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="350"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
-        </Grid.RowDefinitions>
+    <Border BorderThickness="20" BorderBrush="ForestGreen">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
 
 
 
-        <!-- Плитки товаров -->
-        <ListBox Grid.Column="0" ItemsSource="{Binding Items}" BorderThickness="0"
+            <!-- Плитки товаров -->
+            <ListBox Grid.Column="0" ItemsSource="{Binding Items}" BorderThickness="0"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
                  SelectedIndex="{Binding SelectedItem}">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
 
-            <ListBox.ItemTemplate>
-                <!-- "Плитка" продукта -->
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="35"/>
-                        </Grid.RowDefinitions>
+                <ListBox.ItemTemplate>
+                    <!-- "Плитка" продукта -->
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
 
-                        <Image Source="{Binding ImageBytes}" Stretch="Fill"/>
-                        <DockPanel Grid.Row="1">
-                            <TextBlock Style="{DynamicResource tblStyle}"
+                            <Image Source="{Binding ImageBytes}" Stretch="Fill"/>
+                            <DockPanel Grid.Row="1">
+                                <TextBlock Style="{DynamicResource tblStyle}"
                                            Text="{Binding Name}"
                                            Foreground="Black"
                                            VerticalAlignment="Top"
                                            DockPanel.Dock="Left"/>
 
-                            <TextBlock Style="{DynamicResource tblStyle}" 
+                                <TextBlock Style="{DynamicResource tblStyle}" 
                                            Text="{Binding Price}"
                                            Foreground="Black"
                                            VerticalAlignment="Top"
                                            TextAlignment="Right"
                                            DockPanel.Dock="Right"/>
-                        </DockPanel>
+                            </DockPanel>
 
 
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-        <!-- Корзина -->
-        <Grid Grid.Column="1" Background="LightGreen">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="60"/>
-            </Grid.RowDefinitions>
+            <!-- Корзина -->
+            <Grid Grid.Column="1" Background="LightGreen">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
 
-            <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False" Background="Transparent"/>
-            <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}" Background="Transparent">
+                <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False" Background="Transparent"/>
+                <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}" Background="Transparent">
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="DockPanel">
-                        <DockPanel LastChildFill="True">
-                            <StackPanel Width="150" Margin="5">
-                                <TextBlock Text="{Binding Name}"
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="DockPanel">
+                            <DockPanel LastChildFill="True">
+                                <StackPanel Width="150" Margin="5">
+                                    <TextBlock Text="{Binding Name}"
                                            Style="{StaticResource tblStyle}"/>
-                                <TextBlock Text="{Binding Count}"
+                                    <TextBlock Text="{Binding Count}"
                                            Style="{StaticResource tblStyle}"/>
-                            </StackPanel>
-                            <DockPanel HorizontalAlignment="Right" Width="130">
-                                <Button x:Name="btnPlus"
+                                </StackPanel>
+                                <DockPanel HorizontalAlignment="Right" Width="130">
+                                    <Button x:Name="btnPlus"
                                         Background="Green" Content="+"
                                         FontSize="22" Foreground="White"
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
@@ -94,39 +96,40 @@
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"
                                         CommandParameter="{Binding Name}"/>
 
-                                <Button Background="Red" Content="-" 
+                                    <Button Background="Red" Content="-" 
                                         HorizontalAlignment="Right"
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                         Margin="10" DockPanel.Dock="Right"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"
                                         CommandParameter="{Binding Name}"/>
+                                </DockPanel>
                             </DockPanel>
-                        </DockPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <DockPanel Grid.Row="2" Margin="10">
-                <TextBlock Style="{DynamicResource tblStyle}"
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <DockPanel Grid.Row="2" Margin="10">
+                    <TextBlock Style="{DynamicResource tblStyle}"
                                            Text="Итого"
                                            Foreground="Black"
                                            DockPanel.Dock="Left"/>
-                <TextBlock Style="{DynamicResource tblStyle}" 
+                    <TextBlock Style="{DynamicResource tblStyle}" 
                                            Text="{Binding PriceOrder}"
                                            Foreground="Black"
                                            TextAlignment="Right"
                                            DockPanel.Dock="Right"
                                            Margin="10"/>
-            </DockPanel>
-        </Grid>
-        
-        <!-- Оформление заказа -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
+                </DockPanel>
+            </Grid>
+
+            <!-- Оформление заказа -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <Button Command="{Binding CreateOrder}"
+                <Button Command="{Binding CreateOrder}"
                     Height="75" Width="350"
                     Template="{StaticResource btnTemplate}"
                     Content="Заказать">
-            </Button>
-        </StackPanel>
-    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

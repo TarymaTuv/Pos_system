@@ -9,75 +9,61 @@
         MinWidth="900"
         x:Name="thisWindow">
 
-    <Window.Resources>
-        <Style x:Key="tblStyle" TargetType="{x:Type TextBlock}">
-            <Setter Property="FontFamily" Value="Britannic Bold"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Foreground" Value="Orange"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-
-        <Style x:Key="btnStyleTransparent" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="45"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-
-    </Window.Resources>
-    
-    <StackPanel>
-        <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
-        <ListBox ItemsSource="{Binding Orders}" SelectedIndex="{Binding SelectedItem}"
+    <Border BorderThickness="20" BorderBrush="ForestGreen">
+        <StackPanel>
+            <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
+            <ListBox ItemsSource="{Binding Orders}" SelectedIndex="{Binding SelectedItem}"
                  ScrollViewer.CanContentScroll="False"
                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
                  Height="{Binding ElementName=thisWindow, Path=ActualHeight}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="10">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Номер заказа " Style="{StaticResource tblStyle}" Foreground="Black"/>
-                                <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}"/>
-                            </StackPanel>
-                            <ListBox ItemsSource="{Binding OrderItems}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding Name}" Style="{StaticResource tblStyle}"/>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Количество " Style="{StaticResource tblStyle}"/>
-                                                <TextBlock Text="{Binding Count}" Style="{StaticResource tblStyle}"/>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Margin="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Номер заказа " Style="{StaticResource tblStyle}" Foreground="Black"/>
+                                    <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}"/>
+                                </StackPanel>
+                                <ListBox ItemsSource="{Binding OrderItems}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}" Style="{StaticResource tblStyle}"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Количество " Style="{StaticResource tblStyle}"/>
+                                                    <TextBlock Text="{Binding Count}" Style="{StaticResource tblStyle}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </StackPanel>
-                        <StackPanel  Margin="10">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Итого " Style="{StaticResource tblStyle}" Foreground="Black"/>
-                                <TextBlock Text="{Binding Price}" Style="{StaticResource tblStyle}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Margin="5" Width="200" Height="70"
+                            <StackPanel  Margin="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Итого " Style="{StaticResource tblStyle}" Foreground="Black"/>
+                                    <TextBlock Text="{Binding Price}" Style="{StaticResource tblStyle}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Margin="5" Width="200" Height="70"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}"
                                         CommandParameter="{Binding Id}" Template="{StaticResource btnTemplate}" Content="Оплата">
-                                </Button>
+                                    </Button>
 
-                                <Button Margin="5" Width="200" Height="70"
+                                    <Button Margin="5" Width="200" Height="70"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"
                                         CommandParameter="{Binding Id}" Template="{StaticResource btnTemplate}" Content="Готово">
-                                </Button>
+                                    </Button>
 
-                                <Button Margin="5" Width="200" Height="70" 
+                                    <Button Margin="5" Width="200" Height="70" 
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteOrder}"
                                         CommandParameter="{Binding Id}" Template="{StaticResource btnTemplate}" Content="Отмена">
-                                </Button>
+                                    </Button>
+                                </StackPanel>
                             </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Border>
 </Window>
