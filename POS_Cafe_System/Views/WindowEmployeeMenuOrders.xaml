@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:POS_Cafe_System.Views"
         mc:Ignorable="d"
         Title="Касса" Height="450" Width="900"
-        MinWidth="900">
+        MinWidth="900"
+        x:Name="thisWindow">
 
     <Window.Resources>
         <Style x:Key="tblStyle" TargetType="{x:Type TextBlock}">
@@ -43,7 +44,9 @@
     
     <StackPanel>
         <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
-        <ListBox ItemsSource="{Binding Orders}">
+        <ListBox ItemsSource="{Binding Orders}"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 Height="{Binding ElementName=thisWindow, Path=ActualHeight}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -72,13 +75,56 @@
                                 <TextBlock Text="{Binding Price}" Style="{StaticResource tblStyle}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Оплата"  Margin="5" Width="200" Height="70" Template="{StaticResource btnTemplate}"
+                                <Button x:Name="btnPay" Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}">
+                                    <Grid>
+                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                           Stroke="Transparent" StrokeThickness="20" 
+                                           Fill="Green" 
+                                           RadiusX="20" RadiusY="20"
+                                           Width="{Binding ElementName=btnPay ,Path=ActualWidth}"
+                                           Height="{Binding ElementName=btnPay ,Path=ActualHeight}"/>
+
+                                        <TextBlock Text="Оплачено" Style="{StaticResource tblStyle}" 
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="36"/>
+                                    </Grid>
                                 </Button>
-                                <Button Content="Готов"  Margin="5" Width="200" Height="70" Template="{StaticResource btnTemplate}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"/>
-                                <Button Content="Отмена"  Margin="5" Width="200" Height="70" Template="{StaticResource btnTemplate}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteOrder}"/>
+
+                                <Button Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}">
+                                    <Grid>
+                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                           Stroke="Transparent" StrokeThickness="20" 
+                                           Fill="Green" 
+                                           RadiusX="20" RadiusY="20"
+                                           Width="{Binding ElementName=btnPay ,Path=ActualWidth}"
+                                           Height="{Binding ElementName=btnPay ,Path=ActualHeight}"/>
+
+                                        <TextBlock Text="Готово" Style="{StaticResource tblStyle}" 
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="36"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}">
+                                    <Grid>
+                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                           Stroke="Transparent" StrokeThickness="20" 
+                                           Fill="Green" 
+                                           RadiusX="20" RadiusY="20"
+                                           Width="{Binding ElementName=btnPay ,Path=ActualWidth}"
+                                           Height="{Binding ElementName=btnPay ,Path=ActualHeight}"/>
+
+                                        <TextBlock Text="Отмена" Style="{StaticResource tblStyle}" 
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"
+                                           FontSize="36"/>
+                                    </Grid>
+                                </Button>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

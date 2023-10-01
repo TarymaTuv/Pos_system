@@ -36,6 +36,75 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
+        <Storyboard x:Key="storyDown" TargetName="hover">
+            <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
+                                            To="#3656FF" Duration="00:00:00.01"/>
+            <DoubleAnimation Storyboard.TargetProperty="Width" 
+                                                 From="0" To="300" Duration="00:00:01"/>
+        </Storyboard>
+
+        <Storyboard x:Key="storyUp" TargetName="hover">
+            <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
+                                            To="#E6EAFF" Duration="00:00:00.01"/>
+        </Storyboard>
+
+        <Storyboard x:Key="storyLeave" TargetName="hover">
+            <DoubleAnimation Storyboard.TargetProperty="Width"
+                                             To="0" Duration="00:00:00.01"/>
+        </Storyboard>
+
+        <Storyboard x:Key="storyEnter" TargetName="hover">
+            <DoubleAnimation Storyboard.TargetProperty="Width" 
+                                                 To="300" Duration="00:00:01"/>
+        </Storyboard>
+
+        <ControlTemplate x:Key="btnTemplate" TargetType="Button">
+            <Border CornerRadius="5"
+                    BorderBrush="#3656FF"
+                    BorderThickness="1"
+                    Background="Transparent"
+                    Margin="2.5"
+                    ClipToBounds="True">
+                <Grid Height="50">
+                    <Rectangle Name="hover"
+                               Width="0" 
+                               Height="25"
+                               RadiusX="25"
+                               RadiusY="25"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="#E6EAFF"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label Name="textContent" Content="{TemplateBinding Content}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black"/>
+                        </Label.Foreground>
+                    </Label>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard Storyboard="{StaticResource storyEnter}">
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard Storyboard="{StaticResource storyLeave}">
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="PreviewMouseDown">
+                    <BeginStoryboard Storyboard="{StaticResource storyDown}">
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="PreviewMouseUp">
+                    <BeginStoryboard Storyboard="{StaticResource storyUp}">
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
     </Window.Resources>
 
     <Grid>
@@ -157,24 +226,10 @@
         <!-- Оформление заказа -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-            <Button x:Name="btnOrder"
-                    Width="350" Height="100"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Command="{Binding CreateOrder}">
-                <Grid>
-                    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                               Stroke="Transparent" StrokeThickness="20" 
-                               Fill="Green" 
-                               RadiusX="20" RadiusY="20"
-                               Width="{Binding ElementName=btnOrder ,Path=ActualWidth}"
-                               Height="{Binding ElementName=btnOrder ,Path=ActualHeight}"/>
-                    
-                    <TextBlock Text="Заказать" Style="{StaticResource tblStyle}" 
-                               Foreground="White"
-                               HorizontalAlignment="Center"
-                               FontSize="36"/>
-                </Grid>
+            <Button Command="{Binding CreateOrder}"
+                    Template="{StaticResource btnTemplate}"
+                    Height="50" Width="300"
+                    Content="Заказать">
             </Button>
         </StackPanel>
     </Grid>
