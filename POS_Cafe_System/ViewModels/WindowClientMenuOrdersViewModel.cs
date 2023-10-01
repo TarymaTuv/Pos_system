@@ -38,7 +38,7 @@ namespace POS_Cafe_System.ViewModels
                 {
                     item.Count = 0;
                 }
-
+                PriceOrder = "0";
                 OrderItems.Clear();
 
             });
