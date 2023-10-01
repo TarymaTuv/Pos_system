@@ -22,13 +22,13 @@ namespace POS_Cafe_System.ViewModels
             //таймер для обновления заказов в реалтайме
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Tick += new EventHandler(Update);
-            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Interval = new TimeSpan(0, 0, 2);
             timer.Start();
 
             //при необходимости разделить на 2 метода, т.к. сейчас это и сообщение о готовности заказа и его удаление
             Ready = new RelayCommand(o =>
             {
-                if (Orders.Count <= 0)
+                if (SelectedItem < 0)
                 {
                     return;
                 }
@@ -36,10 +36,10 @@ namespace POS_Cafe_System.ViewModels
                 {
                     WorkerDB.ReadyOrder(Orders[SelectedItem].Id);
                 }
-                if (Orders[SelectedItem].IsPay)               //отправляем в бд, что заказ оплачен и удаляем его
-                {
-                    WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
-                }
+            });
+            Pay = new RelayCommand(o =>
+            {
+                WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
             });
         }
         [Reactive]
@@ -47,6 +47,7 @@ namespace POS_Cafe_System.ViewModels
         [Reactive]
         public int SelectedItem { get; set; } = 0;
         public ICommand Ready { get; set; }
+        public ICommand Pay { get; set; }
 
         private void Update(object sender, EventArgs e)
         {

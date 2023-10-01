@@ -19,7 +19,7 @@ namespace POS_Cafe_System.ViewModels
             //таймер для обновления заказов в реалтайме
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Tick += new EventHandler(Update);
-            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Interval = new TimeSpan(0, 0, 2);
             timer.Start();
         }
 
