@@ -81,8 +81,8 @@ namespace POS_Cafe_System.Commands
                     {
                         //чтение из бд по названиям столбцов
                         string id = (string)reader["Id"];
-                        bool isReady = ((string)reader["IsReady"] == "true");
-                        bool isPay = ((string)reader["IsPay"] == "true");
+                        bool isReady = ((string)reader["IsReady"] == "1");
+                        bool isPay = ((string)reader["IsPay"] == "1");
                         double price = (double)reader["Price"];
 
                         //так как в бд хранятся id предмета и его кол-во, а также предметов много, делим строку на разделители(при записи это ; между разными предметами и пробелы между id и количеством)
@@ -172,7 +172,7 @@ namespace POS_Cafe_System.Commands
         /// <returns></returns>
         public static bool ReadyOrder(string id)
         {
-            string query = $"update Orders set IsReady = 'true' where Id ='{id}';";
+            string query = $"update Orders set IsReady = '1' where Id ='{id}';";
 
             using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
@@ -182,6 +182,26 @@ namespace POS_Cafe_System.Commands
             }
 
             return true;
+        }
+        /// <summary>
+        /// Вычисление максимального ID в БД, для того чтобы не повторялись
+        /// </summary>
+        /// <returns></returns>
+        public static int MaxOrderID()
+        {
+            int orderID = 0;
+            List<Order> orders = new List<Order>();
+            orders.AddRange(ReadAllOrder());
+            foreach (Order order in orders)
+            {
+                int _id = int.Parse(order.Id);
+                if (orderID < _id)
+                {
+                    orderID = _id;
+                }
+            }
+            return orderID;
+
         }
 
     }

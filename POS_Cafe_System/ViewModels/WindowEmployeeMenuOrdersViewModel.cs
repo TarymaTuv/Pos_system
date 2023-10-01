@@ -33,24 +33,17 @@ namespace POS_Cafe_System.ViewModels
 
             Ready = new RelayCommand(o =>
             {
-                if (SelectedItem < 0)
-                {
-                    return;
-                }
                 //отправляем в бд, что заказ готов
-                if (Orders[SelectedItem].IsReady)               
-                {
-                    WorkerDB.ReadyOrder(Orders[SelectedItem].Id);
-                }
+                WorkerDB.ReadyOrder(Orders[SelectedItem].Id);
             });
             Pay = new RelayCommand(o =>
             {
+                Orders[SelectedItem].IsPay = true;
                 WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
             });
             DeleteOrder = new RelayCommand(o =>
             {
-                Orders[SelectedItem].IsPay = true;
-                Orders.Remove(Orders[SelectedItem]);
+                WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
             });
         }
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
