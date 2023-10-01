@@ -25,6 +25,7 @@ namespace POS_Cafe_System.ViewModels
             //создание и отправление заказа в базу данных
             CreateOrder = new RelayCommand(o=>
             {
+                Console.WriteLine("work");
                 List<ItemOrder> items = new List<ItemOrder>();
                 items.AddRange(OrderItems);
 
@@ -32,6 +33,7 @@ namespace POS_Cafe_System.ViewModels
                 order.Price = double.Parse(PriceOrder);
 
                 WorkerDB.AddOrder(order);
+                Console.WriteLine("worked");
 
             });
             //у клиента есть корзина(заказ) куда он будет добавлять предметы, этот метод будет у всех предметов в списке

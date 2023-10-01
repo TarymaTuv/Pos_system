@@ -35,67 +35,6 @@
             <Setter Property="Foreground" Value="Orange"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-        
-        <!-- "Плитка" продукта -->
-        <Style x:Key="Item" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="35"/>
-                            </Grid.RowDefinitions>
-
-                            <Image Source="{Binding ImageBytes}"/>
-                            <DockPanel Grid.Row="1">
-                                <TextBlock Style="{DynamicResource tblStyle}"
-                                           Text="{Binding Name}"
-                                           Foreground="Black"
-                                           VerticalAlignment="Top"
-                                           DockPanel.Dock="Left"/>
-                                
-                                <TextBlock Style="{DynamicResource tblStyle}" 
-                                           Text="{Binding Price}"
-                                           Foreground="Black"
-                                           VerticalAlignment="Top"
-                                           TextAlignment="Right"
-                                           DockPanel.Dock="Right"/>
-                            </DockPanel>
-
-
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Height" Value="235"/>
-        </Style>
-        
-        <!-- Общий стиль для кнопок -->
-        <Style x:Key="btnStyle" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Button Background="Transparent" BorderThickness="0">
-                            <Grid Width="{TemplateBinding Width}"
-                                  Height="{TemplateBinding Height}">
-                                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                                       Stroke="Transparent" StrokeThickness="20" 
-                                       Fill="{TemplateBinding Background}" 
-                                       RadiusX="20" RadiusY="20"/>
-                                <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}" 
-                                       Foreground="White"
-                                       HorizontalAlignment="Center"
-                                       FontSize="36"/>
-                            </Grid>
-                        </Button>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </Window.Resources>
 
     <Grid>
@@ -128,6 +67,8 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
+
+                <!-- "Плитка" продукта -->
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -184,13 +125,13 @@
                                         Background="Green" Content="+" 
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                         Margin="10" DockPanel.Dock="Right"
-                                        Style="{StaticResource btnStyle}"
+                                        
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"/>
 
                                 <Button Background="Red" Content="-" 
                                         HorizontalAlignment="Right"
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
-                                        Style="{StaticResource btnStyle}"
+                                        
                                         Margin="10" DockPanel.Dock="Right"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"/>
                             </DockPanel>
@@ -215,11 +156,25 @@
         <!-- Оформление заказа -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-            <Button Style="{StaticResource btnStyle}" 
-                    Content="Заказать" 
+            <Button x:Name="btnOrder"
                     Width="350" Height="100"
-                    Background="Green"
-                    Command="{Binding CreateOrder}"/>
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding CreateOrder}">
+                <Grid>
+                    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                               Stroke="Transparent" StrokeThickness="20" 
+                               Fill="Green" 
+                               RadiusX="20" RadiusY="20"
+                               Width="{Binding ElementName=btnOrder ,Path=ActualWidth}"
+                               Height="{Binding ElementName=btnOrder ,Path=ActualHeight}"/>
+                    
+                    <TextBlock Text="Заказать" Style="{StaticResource tblStyle}" 
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               FontSize="36"/>
+                </Grid>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

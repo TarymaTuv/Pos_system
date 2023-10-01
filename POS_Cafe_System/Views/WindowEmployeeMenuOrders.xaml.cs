@@ -22,6 +22,7 @@ namespace POS_Cafe_System.Views
         public WindowEmployeeMenuOrders()
         {
             InitializeComponent();
+            DataContext = new WindowEmployeeMenuOrders();
         }
     }
 }
