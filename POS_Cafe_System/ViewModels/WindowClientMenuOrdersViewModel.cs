@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DynamicData;
 using POS_Cafe_System.Commands;
 using POS_Cafe_System.Models;
 using ReactiveUI;
@@ -17,7 +19,7 @@ namespace POS_Cafe_System.ViewModels
     {
         public WindowClientMenuOrdersViewModel()
         {
-            Items = new List<ItemOrder>();
+            Items.Clear(); ;
             Items.AddRange(WorkerDB.OrderItems());
 
             //создание и отправление заказа в базу данных
@@ -41,7 +43,8 @@ namespace POS_Cafe_System.ViewModels
                     {
                         OrderItems.Add((Items[SelectedItem]));
                     }
-                    Items[SelectedItem].Count += 1;
+                    Items[SelectedItem].Count++;
+                    OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count = Items[SelectedItem].Count;
                     CalculatePrice();
                 }
             });
@@ -54,13 +57,17 @@ namespace POS_Cafe_System.ViewModels
                     if (OrderItems[SelectedOrderItems].Count == 0)
                     {
                         OrderItems.Remove(OrderItems[SelectedOrderItems]);
+                        Items[SelectedItem].Count--;
                         CalculatePrice();
                     }
                 }
             });
             AddCount= new RelayCommand(o=>
             {
-                OrderItems[SelectedOrderItems].Count += 1;//увеличение количества выбранного товара в корзине
+                if (SelectedOrderItems >= 0)
+                {
+                    OrderItems[SelectedOrderItems].Count += 1;//увеличение количества выбранного товара в корзине
+                }
             });
         }
         private void CalculatePrice()
@@ -76,10 +83,10 @@ namespace POS_Cafe_System.ViewModels
         public ICommand AddInOrder { get; set; }
         public ICommand AddCount { get; set; }
         public ICommand ReduceCount { get; set; }
-        [Reactive]
-        public ObservableCollection<ItemOrder> OrderItems { get; set; } = new ObservableCollection<ItemOrder>(); // то что будет в корзине
-        [Reactive]
-        public List<ItemOrder> Items { get; set; }// то что может заказать клиент
+
+        public BindingList<ItemOrder> OrderItems { get; set; } = new BindingList<ItemOrder>(); // то что будет в корзине
+        public BindingList<ItemOrder> Items { get; set; } = new BindingList<ItemOrder>(); // то что может заказать клиент
+
 
         [Reactive]
         public int SelectedItem { get; set; } = 0;  // то что может заказать клиент, выбранный предмет
