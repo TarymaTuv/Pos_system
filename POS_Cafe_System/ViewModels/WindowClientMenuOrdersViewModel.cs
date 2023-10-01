@@ -34,6 +34,11 @@ namespace POS_Cafe_System.ViewModels
 
                 WorkerDB.AddOrder(order);
 
+                foreach (var item in OrderItems)
+                {
+                    item.Count = 0;
+                }
+
                 OrderItems.Clear();
 
             });
@@ -44,11 +49,12 @@ namespace POS_Cafe_System.ViewModels
             });
             ReduceCount = new RelayCommand(param =>
             {
-                OrderItems.Where(o => o.Name == param as string).First().Count--; //уменьшение количества выбранного товара в корзине
+                var order = OrderItems.Where(o => o.Name == param as string).First();
+                order.Count--; //уменьшение количества выбранного товара в корзине
                                                                                   //если его кол-во = 0, то его надо убрать из корзины
-                if (OrderItems.Where(o => o.Name == param as string).First().Count == 0)
+                if (order.Count == 0)
                 {
-                    OrderItems.Remove(OrderItems.Where(o => o.Name == param as string).First());
+                    OrderItems.Remove(order);
                 }
                 CalculatePrice();
             });
