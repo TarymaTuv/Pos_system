@@ -4,6 +4,101 @@
              xmlns:local="clr-namespace:POS_Cafe_System"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Стили и анимации -->
+        
+        <!-- Стиль кнопки без фона -->
+            <Style x:Key="btnStyleTransparent" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Height" Value="45"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+
+            <!-- Кнопка с определным шаблоном -->
+            <Style x:Key="btnStyleCategory" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Button Style="{StaticResource btnStyleTransparent}">
+                                <TextBlock Text="{TemplateBinding Content}" Style="{DynamicResource tblStyle}"/>
+                            </Button>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- TextBlock -->
+            <Style x:Key="tblStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="FontFamily" Value="Britannic Bold"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Foreground" Value="Orange"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+                <!-- Анимации кнопок -->
+            <Storyboard x:Key="storyClick" TargetName="hover">
+                <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
+                                            To="LimeGreen" Duration="00:00:00.01"/>
+                <DoubleAnimation Storyboard.TargetProperty="Width" 
+                                                 From="0" To="500" Duration="00:00:01"/>
+            </Storyboard>
+
+            <Storyboard x:Key="storyLeave" TargetName="hover">
+                <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
+                                            To="Green" Duration="00:00:00.01"/>
+            </Storyboard>
+
+            <Storyboard x:Key="storyUp" TargetName="hover">
+                <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
+                                            To="Green" Duration="00:00:00.01"/>
+            </Storyboard>
+
+            <Storyboard x:Key="storyEnter" TargetName="hover">
+                <DoubleAnimation Storyboard.TargetProperty="Width" 
+                                                 To="500" Duration="00:00:01"/>
+            </Storyboard>
+
+                <!-- Шаблон кнопки с анимацией -->
+        <ControlTemplate x:Key="btnTemplate" TargetType="Button">
+            <Border CornerRadius="5"
+                    BorderBrush="Green"
+                    BorderThickness="1"
+                    Background="Green"
+                    Margin="2.5"
+                    ClipToBounds="True">
+                <Grid Height="75">
+                    <Rectangle Name="hover"
+                               Width="0" 
+                               Height="{TemplateBinding Height}"
+                               RadiusX="25"
+                               RadiusY="25"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="Green"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock Name="textContent" Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}"
+                               VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard Storyboard="{StaticResource storyEnter}">
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard Storyboard="{StaticResource storyLeave}">
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard Storyboard="{StaticResource storyClick}">
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="PreviewMouseUp">
+                    <BeginStoryboard Storyboard="{StaticResource storyUp}">
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

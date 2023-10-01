@@ -75,58 +75,19 @@
                                 <TextBlock Text="{Binding Price}" Style="{StaticResource tblStyle}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="btnPay" Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}"
-                                        CommandParameter="{Binding Id}">
-                                    <Grid>
-                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                                           Stroke="Transparent" StrokeThickness="20" 
-                                           Fill="Green" 
-                                           RadiusX="20" RadiusY="20"
-                                           Width="{Binding ElementName=btnPay ,Path=ActualWidth}"
-                                           Height="{Binding ElementName=btnPay ,Path=ActualHeight}"/>
-
-                                        <TextBlock Text="Оплачено" Style="{StaticResource tblStyle}" 
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"
-                                           FontSize="36"/>
-                                    </Grid>
+                                <Button x:Name="btnPay" Margin="5" Width="200" Height="70"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}"
+                                        CommandParameter="{Binding Id}" Template="{StaticResource btnTemplate}" Content="Оплата">
                                 </Button>
 
-                                <Button Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"
-                                        CommandParameter="{Binding Id}">
-                                    <Grid>
-                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                                           Stroke="Transparent" StrokeThickness="20" 
-                                           Fill="Green" 
-                                           RadiusX="20" RadiusY="20"
-                                           Width="{Binding ElementName=btnPay ,Path=ActualWidth}"
-                                           Height="{Binding ElementName=btnPay ,Path=ActualHeight}"/>
-
-                                        <TextBlock Text="Готово" Style="{StaticResource tblStyle}" 
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"
-                                           FontSize="36"/>
-                                    </Grid>
+                                <Button Margin="5" Width="200" Height="70"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"
+                                        CommandParameter="{Binding Id}" Template="{StaticResource btnTemplate}" Content="Готово">
                                 </Button>
 
-                                <Button Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteOrder}"
-                                        CommandParameter="{Binding Id}">
-                                    <Grid>
-                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                                           Stroke="Transparent" StrokeThickness="20" 
-                                           Fill="Green" 
-                                           RadiusX="20" RadiusY="20"
-                                           Width="{Binding ElementName=btnPay ,Path=ActualWidth}"
-                                           Height="{Binding ElementName=btnPay ,Path=ActualHeight}"/>
-
-                                        <TextBlock Text="Отмена" Style="{StaticResource tblStyle}" 
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"
-                                           FontSize="36"/>
-                                    </Grid>
+                                <Button Margin="5" Width="200" Height="70" 
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteOrder}"
+                                        CommandParameter="{Binding Id}" Template="{StaticResource btnTemplate}" Content="Отмена">
                                 </Button>
                             </StackPanel>
                         </StackPanel>
