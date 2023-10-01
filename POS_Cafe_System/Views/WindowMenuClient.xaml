@@ -16,7 +16,7 @@
         </Style>
         
         <!-- Кнопка с определным шаблоном -->
-        <Style x:Key="btnStyle" TargetType="{x:Type Button}">
+        <Style x:Key="btnStyleCategory" TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -73,6 +73,22 @@
             </Setter>
             <Setter Property="Height" Value="235"/>
         </Style>
+        
+        <!-- Общий стиль для кнопок -->
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid Width="{TemplateBinding Width}"
+                              Height="{TemplateBinding Height}">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Transparent" StrokeThickness="20" Fill="{TemplateBinding Background}" RadiusX="20" RadiusY="20" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -88,11 +104,11 @@
 
         <!-- Категории -->
         <StackPanel Grid.RowSpan="2">
-            <Button Style="{StaticResource btnStyle}" Content="Категории" Height="60" IsEnabled="False"/>
-            <Button Style="{StaticResource btnStyle}" Content="Бургеры"/>
-            <Button Style="{StaticResource btnStyle}" Content="Картошка-фри"/>
-            <Button Style="{StaticResource btnStyle}" Content="Соусы"/>
-            <Button Style="{StaticResource btnStyle}" Content="Напитки"/>
+                    <Button Style="{StaticResource btnStyleCategory}" Content="Категории" Height="60" IsEnabled="False"/>
+                    <Button Style="{StaticResource btnStyleCategory}" Content="Бургеры"/>
+                    <Button Style="{StaticResource btnStyleCategory}" Content="Картошка-фри"/>
+                    <Button Style="{StaticResource btnStyleCategory}" Content="Соусы"/>
+                    <Button Style="{StaticResource btnStyleCategory}" Content="Напитки"/>
         </StackPanel>
 
         <!-- Плитки товаров -->
@@ -120,7 +136,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <Button Style="{StaticResource btnStyle}" Content="Корзина" IsEnabled="False"/>
+            <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False"/>
             <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="DockPanel">
@@ -131,7 +147,7 @@
                                 <TextBlock Text="{Binding Count}"
                                            Style="{StaticResource tblStyle}"/>
                             </StackPanel>
-                            <DockPanel HorizontalAlignment="Right" Width="150">
+                            <DockPanel HorizontalAlignment="Right" Width="130">
                                 <Button x:Name="btnPlus"
                                         Background="Green" Content="+" 
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
@@ -161,5 +177,11 @@
                                            Margin="10"/>
             </DockPanel>
         </Grid>
+        
+        <!-- Оформление заказа -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
+                    Grid.Row="1" Grid.Column="2">
+            <Button Style="{StaticResource btnStyle}" Content="Заказать"/>
+        </StackPanel>
     </Grid>
 </Window>
