@@ -23,10 +23,10 @@ namespace POS_Cafe_System.ViewModels
             //таймер для обновления заказов в реалтайме
 
             //таймер для обновления заказов в реалтайме
-            System.Timers.Timer timer = new System.Timers.Timer(2000);
-            timer.Elapsed += Update;
-            timer.Enabled = true;
-            timer.AutoReset = true;
+            System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Tick += Update;
+            timer.Interval = new TimeSpan(0,0,2);
+            timer.Start();
 
             Orders.AddRange(WorkerDB.ReadAllOrder());
 
