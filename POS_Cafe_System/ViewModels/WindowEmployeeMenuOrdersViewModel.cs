@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using DynamicData;
 using POS_Cafe_System.Commands;
@@ -21,10 +22,13 @@ namespace POS_Cafe_System.ViewModels
         {
             //таймер для обновления заказов в реалтайме
 
+            //таймер для обновления заказов в реалтайме
             System.Timers.Timer timer = new System.Timers.Timer(2000);
             timer.Elapsed += Update;
-            timer.AutoReset = true;
             timer.Enabled = true;
+            timer.AutoReset = true;
+
+            Orders.AddRange(WorkerDB.ReadAllOrder());
 
             //при необходимости разделить на 2 метода, т.к. сейчас это и сообщение о готовности заказа и его удаление
             Ready = new RelayCommand(o =>
