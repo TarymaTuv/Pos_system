@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using DynamicData;
 using POS_Cafe_System.Commands;
@@ -36,7 +37,7 @@ namespace POS_Cafe_System.ViewModels
             });
             Pay = new RelayCommand(param =>
             {
-                Orders[SelectedItem].IsPay = true;
+                Orders.Where(o => o.Id == param as string).First().IsPay = true;
                 WorkerDB.DeleteOrder(Orders.Where(o => o.Id == param as string).First().Id);
             });
             DeleteOrder = new RelayCommand(param =>
