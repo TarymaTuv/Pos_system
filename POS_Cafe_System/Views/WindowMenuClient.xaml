@@ -98,7 +98,7 @@
         <!-- Плитки товаров -->
         <ListBox Grid.Column="1" ItemsSource="{Binding Items}" BorderThickness="0"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 SelectedItem="{Binding SelectedItem}">
+                 SelectedIndex="{Binding SelectedItem}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True"/>
@@ -106,7 +106,8 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Style="{DynamicResource Item}" Margin="10" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddInOrder}"/>
+                    <Button Style="{DynamicResource Item}" Margin="10" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddInOrder}">
+                    </Button>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -120,15 +121,22 @@
             </Grid.RowDefinitions>
 
             <Button Style="{StaticResource btnStyle}" Content="Корзина" IsEnabled="False"/>
-            <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedItem="{Binding SelectedOrderItems}">
+            <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}"/>
-                            <TextBlock Text="{Binding Count}"/>
-                            <Button Background="Green" Content="+" FontStyle="Oblique" Foreground="White"/>
-                            <Button Background="Red" Content="-" FontStyle="Oblique" Foreground="White"/>
-                        </StackPanel>
+                        <DockPanel LastChildFill="True">
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock  Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding Count}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button DockPanel.Dock="Right" Background="Green" Content="+" 
+                                        FontStretch="Condensed" Foreground="White"/>
+
+                                <Button DockPanel.Dock="Right" Background="Red" Content="-" 
+                                        FontStretch="Condensed" Foreground="White"/>
+                            </StackPanel>
+                        </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -138,10 +146,11 @@
                                            Foreground="Black"
                                            DockPanel.Dock="Left"/>
                 <TextBlock Style="{DynamicResource tblStyle}" 
-                                           Text="{Binding Price}"
+                                           Text="{Binding PriceOrder}"
                                            Foreground="Black"
                                            TextAlignment="Right"
-                                           DockPanel.Dock="Right"/>
+                                           DockPanel.Dock="Right"
+                                           Margin="10"/>
             </DockPanel>
         </Grid>
     </Grid>
