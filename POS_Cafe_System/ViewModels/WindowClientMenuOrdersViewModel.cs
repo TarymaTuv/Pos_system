@@ -35,23 +35,42 @@ namespace POS_Cafe_System.ViewModels
             //у клиента есть корзина(заказ) куда он будет добавлять предметы, этот метод будет у всех предметов в списке
             AddInOrder = new RelayCommand(o=>
             {
-                OrderItems.Add((Items[SelectedItem]));
-                PriceOrder = (Items[SelectedItem].Price).ToString();
+                if (SelectedItem >= 0)
+                {
+                    if (Items[SelectedItem].Count == 0)
+                    {
+                        OrderItems.Add((Items[SelectedItem]));
+                    }
+                    Items[SelectedItem].Count += 1;
+                    CalculatePrice();
+                }
             });
             ReduceCount = new RelayCommand(o=>
             {
-                OrderItems[SelectedOrderItems].Count -= 1; //уменьшение количества выбранного товара в корзине
-                //если его кол-во = 0, то его надо убрать из корзины
-                if (OrderItems[SelectedOrderItems].Count == 0)
+                if (SelectedOrderItems >= 0)
                 {
-                    OrderItems.Remove(OrderItems[SelectedOrderItems]);
-                    PriceOrder = (Items[SelectedItem].Price * Items[SelectedItem].Count).ToString();
+                    OrderItems[SelectedOrderItems].Count -= 1; //уменьшение количества выбранного товара в корзине
+                                                               //если его кол-во = 0, то его надо убрать из корзины
+                    if (OrderItems[SelectedOrderItems].Count == 0)
+                    {
+                        OrderItems.Remove(OrderItems[SelectedOrderItems]);
+                        CalculatePrice();
+                    }
                 }
             });
             AddCount= new RelayCommand(o=>
             {
                 OrderItems[SelectedOrderItems].Count += 1;//увеличение количества выбранного товара в корзине
             });
+        }
+        private void CalculatePrice()
+        {
+            double price = 0;
+            foreach(var item in OrderItems)
+            {
+                price += item.Price * item.Count;
+            }
+            PriceOrder = price.ToString();
         }
         public ICommand CreateOrder { get; set; }
         public ICommand AddInOrder { get; set; }
