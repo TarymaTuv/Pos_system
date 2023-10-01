@@ -45,12 +45,12 @@ namespace POS_Cafe_System.ViewModels
             });
             Pay = new RelayCommand(o =>
             {
+                Orders[SelectedItem].IsPay = true;
                 WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
             });
             DeleteOrder = new RelayCommand(o =>
             {
-                Orders[SelectedItem].IsPay = true;
-                Orders.Remove(Orders[SelectedItem]);
+                WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
             });
         }
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();

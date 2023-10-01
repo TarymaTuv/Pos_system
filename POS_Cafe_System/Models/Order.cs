@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using POS_Cafe_System.Commands;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace POS_Cafe_System.Models
 {
     public class Order
     {
-        public static int staticID = 0;
+        public static int staticID = WorkerDB.MaxOrderID();
         public bool IsReady { get; set; } = false;
         public bool IsPay { get; set; } = false;
         public string Id { get; set; }
