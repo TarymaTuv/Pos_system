@@ -37,16 +37,7 @@ namespace POS_Cafe_System.ViewModels
             //у клиента есть корзина(заказ) куда он будет добавлять предметы, этот метод будет у всех предметов в списке
             AddInOrder = new RelayCommand(o=>
             {
-                if (SelectedItem >= 0)
-                {
-                    if (Items[SelectedItem].Count == 0)
-                    {
-                        OrderItems.Add((Items[SelectedItem]));
-                    }
-                    Items[SelectedItem].Count++;
-                    OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count = Items[SelectedItem].Count;
-                    CalculatePrice();
-                }
+                Add();
             });
             ReduceCount = new RelayCommand(o=>
             {
@@ -79,6 +70,20 @@ namespace POS_Cafe_System.ViewModels
             }
             PriceOrder = price.ToString();
         }
+        private void Add()
+        {
+            if (SelectedItem >= 0)
+            {
+                if (Items[SelectedItem].Count == 0)
+                {
+                    OrderItems.Add((Items[SelectedItem]));
+                }
+                Items[SelectedItem].Count++;
+                OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count = Items[SelectedItem].Count;
+                CalculatePrice();
+            }
+        }
+
         public ICommand CreateOrder { get; set; }
         public ICommand AddInOrder { get; set; }
         public ICommand AddCount { get; set; }
@@ -87,9 +92,17 @@ namespace POS_Cafe_System.ViewModels
         public BindingList<ItemOrder> OrderItems { get; set; } = new BindingList<ItemOrder>(); // то что будет в корзине
         public BindingList<ItemOrder> Items { get; set; } = new BindingList<ItemOrder>(); // то что может заказать клиент
 
-
-        [Reactive]
-        public int SelectedItem { get; set; } = 0;  // то что может заказать клиент, выбранный предмет
+        // то что может заказать клиент, выбранный предмет
+        int _selectedItem = 0;
+        public int SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _selectedItem, value);
+                Add();
+            }
+        }
         [Reactive]
         public int SelectedOrderItems { get; set; } = 0;// то что будет в корзине, выбранный предмет
         [Reactive]
