@@ -24,7 +24,7 @@ namespace POS_Cafe_System.ViewModels
             //таймер для обновления заказов в реалтайме
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Tick += Update;
-            timer.Interval = new TimeSpan(0,0,1);
+            timer.Interval = new TimeSpan(0,0,3);
             timer.Start();
 
             Orders.AddRange(WorkerDB.ReadAllOrder());
@@ -40,6 +40,7 @@ namespace POS_Cafe_System.ViewModels
                 //отправляем сообщение об оплате, удаляем заказ из БД
                 var order = Orders.Where(o => o.Id == param as string).First();
                 order.IsPay = true;
+                Orders.Remove(order);
                 WorkerDB.DeleteOrder(order.Id);
             });
             DeleteOrder = new RelayCommand(param =>
