@@ -20,10 +20,11 @@ namespace POS_Cafe_System.ViewModels
         public WindowEmployeeMenuOrdersViewModel()
         {
             //таймер для обновления заказов в реалтайме
-            System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
-            timer.Tick += new EventHandler(Update);
-            timer.Interval = new TimeSpan(0, 0, 2);
-            timer.Start();
+
+            System.Timers.Timer timer = new System.Timers.Timer(2000);
+            timer.Elapsed += Update;
+            timer.AutoReset = true;
+            timer.Enabled = true;
 
             //при необходимости разделить на 2 метода, т.к. сейчас это и сообщение о готовности заказа и его удаление
             Ready = new RelayCommand(o =>
@@ -42,7 +43,6 @@ namespace POS_Cafe_System.ViewModels
                 WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
             });
         }
-        [Reactive]
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
         [Reactive]
         public int SelectedItem { get; set; } = 0;
@@ -51,8 +51,7 @@ namespace POS_Cafe_System.ViewModels
 
         private void Update(object sender, EventArgs e)
         {
-            Orders.Clear();
-            Orders.AddRange(WorkerDB.ReadAllOrder());
+            Console.WriteLine("event time");
         }
     }
 }
