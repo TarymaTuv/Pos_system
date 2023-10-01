@@ -20,24 +20,6 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
-
-        <ControlTemplate x:Key="btnTemplate" TargetType="Button">
-            <Grid
-                                             Width="{TemplateBinding Width}"
-                                             Height="{TemplateBinding Height}"
-                                            >
-                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                               Stroke="Transparent" StrokeThickness="20" 
-                               Fill="Green" 
-                               RadiusX="20" RadiusY="20"
-/>
-
-                <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}" 
-                               Foreground="White"
-                               HorizontalAlignment="Center"
-                               FontSize="46"/>
-            </Grid>
-        </ControlTemplate>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

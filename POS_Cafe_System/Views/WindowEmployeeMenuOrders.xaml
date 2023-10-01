@@ -23,29 +23,13 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
-        <ControlTemplate x:Key="btnTemplate" TargetType="Button">
-            <Grid
-                                             Width="{TemplateBinding Width}"
-                                             Height="{TemplateBinding Height}"
-                                            >
-                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                               Stroke="Transparent" StrokeThickness="20" 
-                               Fill="Green" 
-                               RadiusX="20" RadiusY="20"
-/>
-
-                <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}" 
-                               Foreground="White"
-                               HorizontalAlignment="Center"
-                               FontSize="46"/>
-            </Grid>
-        </ControlTemplate>
     </Window.Resources>
     
     <StackPanel>
         <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
         <ListBox ItemsSource="{Binding Orders}" SelectedIndex="{Binding SelectedItem}"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.CanContentScroll="False"
                  Height="{Binding ElementName=thisWindow, Path=ActualHeight}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -75,7 +59,7 @@
                                 <TextBlock Text="{Binding Price}" Style="{StaticResource tblStyle}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="btnPay" Margin="5" Width="200" Height="70"
+                                <Button Margin="5" Width="200" Height="70"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}"
                                         CommandParameter="{Binding Id}" Template="{StaticResource btnTemplate}" Content="Оплата">
                                 </Button>

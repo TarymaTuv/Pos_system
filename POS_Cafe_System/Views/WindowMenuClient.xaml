@@ -10,7 +10,6 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
@@ -19,17 +18,10 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <!-- Категории -->
-        <StackPanel Grid.RowSpan="2">
-                    <Button Style="{StaticResource btnStyleCategory}" Content="Категории" Height="60" IsEnabled="False"/>
-                    <Button Style="{StaticResource btnStyleCategory}" Content="Бургеры"/>
-                    <Button Style="{StaticResource btnStyleCategory}" Content="Картошка-фри"/>
-                    <Button Style="{StaticResource btnStyleCategory}" Content="Соусы"/>
-                    <Button Style="{StaticResource btnStyleCategory}" Content="Напитки"/>
-        </StackPanel>
+
 
         <!-- Плитки товаров -->
-        <ListBox Grid.Column="1" ItemsSource="{Binding Items}" BorderThickness="0"
+        <ListBox Grid.Column="0" ItemsSource="{Binding Items}" BorderThickness="0"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  SelectedIndex="{Binding SelectedItem}">
             <ListBox.ItemsPanel>
@@ -74,7 +66,7 @@
         </ListBox>
 
         <!-- Корзина -->
-        <Grid Grid.Column="2">
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
@@ -128,7 +120,7 @@
         
         <!-- Оформление заказа -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
-                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <Button Command="{Binding CreateOrder}"
                     Height="75" Width="300"
                     Template="{StaticResource btnTemplate}"
