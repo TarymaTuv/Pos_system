@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POS_Cafe_System.Views"
         mc:Ignorable="d"
-        Title="Меню заказов" Height="800" Width="1000">
+        Title="Меню заказов" Height="800" Width="1100"
+        MinWidth="800" MinHeight="450">
     <Window.Resources>
         <!-- Стиль кнопки -->
         <Style x:Key="btnStyleTransparent" TargetType="{x:Type Button}">
@@ -49,13 +50,14 @@
                                 <RowDefinition Height="35"/>
                             </Grid.RowDefinitions>
 
-                            <Image Source="{Binding Image}"/>
+                            <Image Source="{Binding ImageBytes}"/>
                             <DockPanel Grid.Row="1">
                                 <TextBlock Style="{DynamicResource tblStyle}"
                                            Text="{Binding Name}"
                                            Foreground="Black"
                                            VerticalAlignment="Top"
                                            DockPanel.Dock="Left"/>
+                                
                                 <TextBlock Style="{DynamicResource tblStyle}" 
                                            Text="{Binding Price}"
                                            Foreground="Black"
@@ -69,9 +71,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Width" Value="235"/>
             <Setter Property="Height" Value="235"/>
-
         </Style>
     </Window.Resources>
 
@@ -79,12 +79,14 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
+        <!-- Категории -->
         <StackPanel Grid.RowSpan="2">
             <Button Style="{StaticResource btnStyle}" Content="Категории" Height="60" IsEnabled="False"/>
             <Button Style="{StaticResource btnStyle}" Content="Бургеры"/>
@@ -93,21 +95,54 @@
             <Button Style="{StaticResource btnStyle}" Content="Напитки"/>
         </StackPanel>
 
-        <ListBox Grid.Column="1" ItemsSource="{Binding Items}" BorderThickness="0">
+        <!-- Плитки товаров -->
+        <ListBox Grid.Column="1" ItemsSource="{Binding Items}" BorderThickness="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True"/>
+                    <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Style="{DynamicResource Item}"/>
+                    <Button Style="{DynamicResource Item}" Margin="10" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddInOrder}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <!-- Корзина -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
 
-
-
+            <Button Style="{StaticResource btnStyle}" Content="Корзина" IsEnabled="False"/>
+            <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedItem="{Binding SelectedOrderItems}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding Count}"/>
+                            <Button Background="Green" Content="+" FontStyle="Oblique" Foreground="White"/>
+                            <Button Background="Red" Content="-" FontStyle="Oblique" Foreground="White"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <DockPanel Grid.Row="2">
+                <TextBlock Style="{DynamicResource tblStyle}"
+                                           Text="Итого"
+                                           Foreground="Black"
+                                           DockPanel.Dock="Left"/>
+                <TextBlock Style="{DynamicResource tblStyle}" 
+                                           Text="{Binding Price}"
+                                           Foreground="Black"
+                                           TextAlignment="Right"
+                                           DockPanel.Dock="Right"/>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>
