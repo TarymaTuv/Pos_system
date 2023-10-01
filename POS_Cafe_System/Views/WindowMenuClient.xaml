@@ -9,14 +9,14 @@
         MinWidth="800" MinHeight="450">
     <Window.Resources>
         <!-- Стиль кнопки -->
-        <Style x:Key="btnStyleTransparent" TargetType="{x:Type Button}">
+        <Style x:Key="btnStyleTransparent" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Height" Value="45"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
         
         <!-- Кнопка с определным шаблоном -->
-        <Style x:Key="btnStyleCategory" TargetType="{x:Type Button}">
+        <Style x:Key="btnStyleCategory" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -67,7 +67,6 @@
                     <WrapPanel ItemHeight="250" ItemWidth="250" IsItemsHost="True" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
-            
 
 
             <ListBox.ItemTemplate>
@@ -114,6 +113,7 @@
 
             <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False"/>
             <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}">
+
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="DockPanel">
                         <DockPanel LastChildFill="True">
@@ -128,13 +128,11 @@
                                         Background="Green" Content="+" 
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                         Margin="10" DockPanel.Dock="Right"
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}">
-                                </Button>
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"/>
 
                                 <Button Background="Red" Content="-" 
                                         HorizontalAlignment="Right"
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
-                                        
                                         Margin="10" DockPanel.Dock="Right"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"/>
                             </DockPanel>
