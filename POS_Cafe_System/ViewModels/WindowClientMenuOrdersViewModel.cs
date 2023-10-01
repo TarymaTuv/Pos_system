@@ -19,7 +19,7 @@ namespace POS_Cafe_System.ViewModels
     {
         public WindowClientMenuOrdersViewModel()
         {
-            Items.Clear(); ;
+            Items.Clear();
             Items.AddRange(WorkerDB.OrderItems());
 
             //создание и отправление заказа в базу данных
