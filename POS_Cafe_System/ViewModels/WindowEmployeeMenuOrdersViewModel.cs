@@ -30,7 +30,7 @@ namespace POS_Cafe_System.ViewModels
 
             Orders.AddRange(WorkerDB.ReadAllOrder());
 
-            //при необходимости разделить на 2 метода, т.к. сейчас это и сообщение о готовности заказа и его удаление
+
             Ready = new RelayCommand(o =>
             {
                 if (SelectedItem < 0)
@@ -49,7 +49,8 @@ namespace POS_Cafe_System.ViewModels
             });
             DeleteOrder = new RelayCommand(o =>
             {
-                WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
+                Orders[SelectedItem].IsPay = true;
+                Orders.Remove(Orders[SelectedItem]);
             });
         }
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
@@ -61,10 +62,6 @@ namespace POS_Cafe_System.ViewModels
 
         private void Update(object sender, EventArgs e)
         {
-            List<Order> items = new List<Order>();
-            items.AddRange(WorkerDB.ReadAllOrder());
-
-
             Orders.Clear();
             Orders.AddRange(WorkerDB.ReadAllOrder());
         }
