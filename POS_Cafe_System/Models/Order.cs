@@ -19,7 +19,7 @@ namespace POS_Cafe_System.Models
         public List<ItemOrder> OrderItems { get; set; } = new List<ItemOrder>();
         public Order(List<ItemOrder> items)
         {
-            Id = staticID.ToString();
+            Id = staticID + "";
             OrderItems = items;
             staticID++;
         }
