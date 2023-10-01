@@ -37,12 +37,17 @@ namespace POS_Cafe_System.ViewModels
             });
             Pay = new RelayCommand(param =>
             {
-                Orders.Where(o => o.Id == param as string).First().IsPay = true;
-                WorkerDB.DeleteOrder(Orders.Where(o => o.Id == param as string).First().Id);
+                //отправляем сообщение об оплате, удаляем заказ из БД
+                var order = Orders.Where(o => o.Id == param as string).First();
+                order.IsPay = true;
+                WorkerDB.DeleteOrder(order.Id);
             });
             DeleteOrder = new RelayCommand(param =>
             {
-                WorkerDB.DeleteOrder(Orders.Where(o => o.Id == param as string).First().Id);
+                //Удаляем заказ из БД
+                var order = Orders.Where(o => o.Id == param as string).First();
+                Orders.Remove(order);
+                WorkerDB.DeleteOrder(order.Id);
             });
         }
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
