@@ -13,7 +13,6 @@ namespace POS_Cafe_System.Commands
     public static class WorkerDB
     {
         static string _connectionString = "Data Source = " + Environment.CurrentDirectory + "\\Resources\\CafeDB.db";//строка подключения к бд
-        static List<ItemOrder> _itemsOrder = new List<ItemOrder>(); 
 
         /// <summary>
         /// Проверка подключения к БД
@@ -57,7 +56,6 @@ namespace POS_Cafe_System.Commands
                     }
                 }
             }
-            _itemsOrder = items;
             return items;
         }
         /// <summary>
@@ -66,6 +64,9 @@ namespace POS_Cafe_System.Commands
         /// <returns></returns>
         public static IEnumerable<Order> ReadAllOrder()
         {
+            List<ItemOrder> items = new List<ItemOrder>();
+            items.AddRange(OrderItems());
+
             List<Order> orders = new List<Order>();
             string query = $"select * from Orders;";
 
@@ -94,7 +95,7 @@ namespace POS_Cafe_System.Commands
                             int idItem = int.Parse(orderItems[i].Split(' ')[0]);
                             int countItem = int.Parse(orderItems[i].Split(' ')[1]);
 
-                            ItemOrder itemOrder = _itemsOrder.Where(o => o.Id == idItem).First();
+                            ItemOrder itemOrder = items.Where(o => o.Id == idItem).First();
                             itemOrder.Count = countItem;
                             itemsOrder.Add(itemOrder);
                         }

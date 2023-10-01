@@ -25,7 +25,6 @@ namespace POS_Cafe_System.ViewModels
             //создание и отправление заказа в базу данных
             CreateOrder = new RelayCommand(o=>
             {
-                Console.WriteLine("workI");
                 List<ItemOrder> items = new List<ItemOrder>();
                 items.AddRange(OrderItems);
 
@@ -33,7 +32,8 @@ namespace POS_Cafe_System.ViewModels
                 order.Price = double.Parse(PriceOrder);
 
                 WorkerDB.AddOrder(order);
-                Console.WriteLine("worked");
+
+                OrderItems.Clear();
 
             });
             //у клиента есть корзина(заказ) куда он будет добавлять предметы, этот метод будет у всех предметов в списке
@@ -76,22 +76,14 @@ namespace POS_Cafe_System.ViewModels
         }
         private void Add()
         {
-            try
+            if (SelectedItem >= 0)
             {
-                if (SelectedItem >= 0)
+                if (!OrderItems.Contains(Items[SelectedItem]))
                 {
-                    if (Items[SelectedItem].Count == 0)
-                    {
-                        OrderItems.Add((Items[SelectedItem]));
-                    }
-                    Items[SelectedItem].Count++;
-                    OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count = Items[SelectedItem].Count;
-                    CalculatePrice();
+                    OrderItems.Add((Items[SelectedItem]));
                 }
-            }
-            catch
-            {
-                Console.WriteLine("последовательность не содержит элементов!");//небольшое сообщение об ошибке, не влияющей на процесс
+                OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count += 1;
+                CalculatePrice();
             }
         }
 
@@ -100,8 +92,8 @@ namespace POS_Cafe_System.ViewModels
         public ICommand AddCount { get; set; }
         public ICommand ReduceCount { get; set; }
 
-        public BindingList<ItemOrder> OrderItems { get; set; } = new BindingList<ItemOrder>(); // то что будет в корзине
-        public BindingList<ItemOrder> Items { get; set; } = new BindingList<ItemOrder>(); // то что может заказать клиент
+        public ObservableCollection<ItemOrder> OrderItems { get; set; } = new ObservableCollection<ItemOrder>(); // то что будет в корзине
+        public ObservableCollection<ItemOrder> Items { get; set; } = new ObservableCollection<ItemOrder>(); // то что может заказать клиент
 
         // то что может заказать клиент, выбранный предмет
         int _selectedItem = 0;
