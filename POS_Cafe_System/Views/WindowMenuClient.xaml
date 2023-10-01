@@ -123,19 +123,27 @@
             <Button Style="{StaticResource btnStyle}" Content="Корзина" IsEnabled="False"/>
             <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}">
                 <ListBox.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate DataType="DockPanel">
                         <DockPanel LastChildFill="True">
-                            <StackPanel DockPanel.Dock="Left">
-                                <TextBlock  Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding Count}"/>
+                            <StackPanel Width="150">
+                                <TextBlock Text="{Binding Name}"
+                                           Style="{StaticResource tblStyle}"/>
+                                <TextBlock Text="{Binding Count}"
+                                           Style="{StaticResource tblStyle}"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Button DockPanel.Dock="Right" Background="Green" Content="+" 
-                                        FontStretch="Condensed" Foreground="White"/>
+                            <DockPanel HorizontalAlignment="Right" Width="150">
+                                <Button x:Name="btnPlus"
+                                        Background="Green" Content="+" 
+                                        Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
+                                        FontStretch="Condensed" Foreground="White"
+                                        Margin="10" DockPanel.Dock="Right"/>
 
-                                <Button DockPanel.Dock="Right" Background="Red" Content="-" 
-                                        FontStretch="Condensed" Foreground="White"/>
-                            </StackPanel>
+                                <Button Background="Red" Content="-" 
+                                        HorizontalAlignment="Right"
+                                        Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
+                                        FontStretch="Condensed" Foreground="White"
+                                        Margin="10" DockPanel.Dock="Right"/>
+                            </DockPanel>
                         </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
