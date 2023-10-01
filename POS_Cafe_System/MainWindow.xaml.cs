@@ -27,6 +27,7 @@ namespace POS_Cafe_System
             InitializeComponent();
             new WindowMenuOrders().Show();
             new WindowEmployeeMenuOrders().Show();
+            new WindowReadinessOrder().Show();
             this.Close();
         }        
     }

@@ -70,13 +70,15 @@
                                 <TextBlock Text="Итого " Style="{StaticResource tblStyle}" Foreground="Black"/>
                                 <TextBlock Text="{Binding Price}" Style="{StaticResource tblStyle}"/>
                             </StackPanel>
-                            <Button Content="Оплата"  Margin="10" Width="200" Height="70" Template="{StaticResource btnTemplate}"
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Оплата"  Margin="5" Width="200" Height="70" Template="{StaticResource btnTemplate}"
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}">
-                            </Button>
-                            <Button Content="Готов"  Margin="10" Width="200" Height="70" Template="{StaticResource btnTemplate}"
+                                </Button>
+                                <Button Content="Готов"  Margin="5" Width="200" Height="70" Template="{StaticResource btnTemplate}"
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"/>
-                            <Button Content="Отмена"  Margin="10" Width="200" Height="70" Template="{StaticResource btnTemplate}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"/>
+                                <Button Content="Отмена"  Margin="5" Width="200" Height="70" Template="{StaticResource btnTemplate}"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteOrder}"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
