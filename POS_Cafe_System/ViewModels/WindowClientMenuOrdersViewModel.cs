@@ -25,7 +25,6 @@ namespace POS_Cafe_System.ViewModels
             //создание и отправление заказа в базу данных
             CreateOrder = new RelayCommand(o=>
             {
-                Console.WriteLine("IT IS WPRK");
                 List<ItemOrder> items = new List<ItemOrder>();
                 items.AddRange(OrderItems);
 
