@@ -79,17 +79,19 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Width="{TemplateBinding Width}"
+                        <Button Background="Transparent" BorderThickness="0">
+                            <Grid Width="{TemplateBinding Width}"
                                   Height="{TemplateBinding Height}">
-                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                                        Stroke="Transparent" StrokeThickness="20" 
                                        Fill="{TemplateBinding Background}" 
                                        RadiusX="20" RadiusY="20"/>
-                            <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}" 
+                                <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}" 
                                        Foreground="White"
                                        HorizontalAlignment="Center"
                                        FontSize="36"/>
-                        </Grid>
+                            </Grid>
+                        </Button>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

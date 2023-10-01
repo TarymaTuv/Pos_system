@@ -6,7 +6,29 @@
         xmlns:local="clr-namespace:POS_Cafe_System.Views"
         mc:Ignorable="d"
         Title="WindowEmployeeMenuOrders" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="Заказы"/>
+        <ListBox ItemsSource="{Binding Orders}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id}"/>
+                        <ListBox ItemsSource="{Binding OrderItems}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="{Binding Count}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="{Binding Price}"/>
+                        <Button Content="Оплата" Command="{Binding Pay}"/>
+                        <Button Content="Готов" Command="{Binding Ready}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </Window>
