@@ -86,7 +86,7 @@ namespace POS_Cafe_System.Commands
                         //так как в бд хранятся id предмета и его кол-во, а также предметов много, делим строку на разделители(при записи это ; между разными предметами и пробелы между id и количеством)
                         string[] orderItems = ((string)reader["OrderItems"]).Split(';');
                         List< ItemOrder > itemsOrder = new List< ItemOrder >();
-
+                        /*
                         foreach (var item in orderItems)
                         {
                             //парсим строку
@@ -97,6 +97,7 @@ namespace POS_Cafe_System.Commands
                             itemOrder.Count = countItem;
                             itemsOrder.Add(itemOrder);
                         }
+                        */
                         //создаем заказ
                         Order order = new Order(itemsOrder);
                         order.Id = id; 
