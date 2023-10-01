@@ -38,7 +38,7 @@
 
         <Storyboard x:Key="storyClick" TargetName="hover">
             <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
-                                            To="Lime" Duration="00:00:00.01"/>
+                                            To="LimeGreen" Duration="00:00:00.01"/>
             <DoubleAnimation Storyboard.TargetProperty="Width" 
                                                  From="0" To="500" Duration="00:00:01"/>
         </Storyboard>
@@ -79,7 +79,8 @@
                             <SolidColorBrush Color="Green"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <TextBlock Name="textContent" Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}"/>
+                    <TextBlock Name="textContent" Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}"
+                               VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
                 </Grid>
             </Border>
             <ControlTemplate.Triggers>
