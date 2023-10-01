@@ -60,6 +60,7 @@ namespace POS_Cafe_System.ViewModels
                 if (SelectedOrderItems >= 0)
                 {
                     OrderItems[SelectedOrderItems].Count += 1;//увеличение количества выбранного товара в корзине
+                    CalculatePrice();
                 }
             });
         }
@@ -98,7 +99,10 @@ namespace POS_Cafe_System.ViewModels
         int _selectedItem = 0;
         public int SelectedItem
         {
-            get => _selectedItem;
+            get
+            {
+                return _selectedItem;
+            }
             set
             {
                 this.RaiseAndSetIfChanged(ref _selectedItem, value);

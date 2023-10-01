@@ -23,10 +23,10 @@ namespace POS_Cafe_System.ViewModels
             //таймер для обновления заказов в реалтайме
 
             //таймер для обновления заказов в реалтайме
-            System.Timers.Timer timer = new System.Timers.Timer(2000);
-            //timer.Elapsed += Update;
-            timer.Enabled = true;
-            timer.AutoReset = true;
+            System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Tick += Update;
+            timer.Interval = new TimeSpan(0,0,2);
+            timer.Start();
 
             Orders.AddRange(WorkerDB.ReadAllOrder());
 
@@ -37,12 +37,17 @@ namespace POS_Cafe_System.ViewModels
                 {
                     return;
                 }
-                if (Orders[SelectedItem].IsReady)               //отправляем в бд, что заказ готов
+                //отправляем в бд, что заказ готов
+                if (Orders[SelectedItem].IsReady)               
                 {
                     WorkerDB.ReadyOrder(Orders[SelectedItem].Id);
                 }
             });
             Pay = new RelayCommand(o =>
+            {
+                WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
+            });
+            DeleteOrder = new RelayCommand(o =>
             {
                 WorkerDB.DeleteOrder(Orders[SelectedItem].Id);
             });
@@ -52,6 +57,7 @@ namespace POS_Cafe_System.ViewModels
         public int SelectedItem { get; set; } = 0;
         public ICommand Ready { get; set; }
         public ICommand Pay { get; set; }
+        public ICommand DeleteOrder { get; set; }
 
         private void Update(object sender, EventArgs e)
         {
