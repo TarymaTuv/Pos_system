@@ -6,25 +6,46 @@
         xmlns:local="clr-namespace:POS_Cafe_System.Views"
         mc:Ignorable="d"
         Title="WindowEmployeeMenuOrders" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="tblStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Britannic Bold"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="Orange"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="btnStyleTransparent" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
+    
     <StackPanel>
-        <TextBlock Text="Заказы"/>
+        <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
         <ListBox ItemsSource="{Binding Orders}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Id}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Номер заказа " Style="{StaticResource tblStyle}" Foreground="Black"/>
+                            <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}"/>
+                        </StackPanel>
                         <ListBox ItemsSource="{Binding OrderItems}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <TextBlock Text="{Binding Name}"/>
-                                        <TextBlock Text="{Binding Name}"/>
-                                        <TextBlock Text="{Binding Count}"/>
+                                        <TextBlock Text="{Binding Name}" Style="{StaticResource tblStyle}"/>
+                                        <TextBlock Text="{Binding Count}" Style="{StaticResource tblStyle}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <TextBlock Text="{Binding Price}"/>
+                        <DockPanel>
+                            <TextBlock Text="Итого " Style="{StaticResource tblStyle}" Foreground="Black"/>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding Price}" Style="{StaticResource tblStyle}"/>
+                        </DockPanel>
                         <Button Content="Оплата" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}"/>
                         <Button Content="Готов" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"/>
                     </StackPanel>
