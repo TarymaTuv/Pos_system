@@ -61,6 +61,10 @@ namespace POS_Cafe_System.ViewModels
 
         private void Update(object sender, EventArgs e)
         {
+            List<Order> items = new List<Order>();
+            items.AddRange(WorkerDB.ReadAllOrder());
+
+
             Orders.Clear();
             Orders.AddRange(WorkerDB.ReadAllOrder());
         }

@@ -23,5 +23,10 @@ namespace POS_Cafe_System.Models
             OrderItems = items;
             staticID++;
         }
+        public Order(List<ItemOrder> items, string id)
+        {
+            Id = id;
+            OrderItems = items;
+        }
     }
 }

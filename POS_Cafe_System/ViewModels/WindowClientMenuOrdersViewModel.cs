@@ -76,15 +76,22 @@ namespace POS_Cafe_System.ViewModels
         }
         private void Add()
         {
-            if (SelectedItem >= 0)
+            try
             {
-                if (Items[SelectedItem].Count == 0)
+                if (SelectedItem >= 0)
                 {
-                    OrderItems.Add((Items[SelectedItem]));
+                    if (Items[SelectedItem].Count == 0)
+                    {
+                        OrderItems.Add((Items[SelectedItem]));
+                    }
+                    Items[SelectedItem].Count++;
+                    OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count = Items[SelectedItem].Count;
+                    CalculatePrice();
                 }
-                Items[SelectedItem].Count++;
-                OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count = Items[SelectedItem].Count;
-                CalculatePrice();
+            }
+            catch
+            {
+                Console.WriteLine("последовательность не содержит элементов!");//небольшое сообщение об ошибке, не влияющей на процесс
             }
         }
 
