@@ -33,15 +33,8 @@ namespace POS_Cafe_System.ViewModels
 
             Ready = new RelayCommand(o =>
             {
-                if (SelectedItem < 0)
-                {
-                    return;
-                }
                 //отправляем в бд, что заказ готов
-                if (Orders[SelectedItem].IsReady)               
-                {
-                    WorkerDB.ReadyOrder(Orders[SelectedItem].Id);
-                }
+                WorkerDB.ReadyOrder(Orders[SelectedItem].Id);
             });
             Pay = new RelayCommand(o =>
             {
