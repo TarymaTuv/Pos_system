@@ -76,7 +76,8 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Button x:Name="btnPay" Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}">
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Pay}"
+                                        CommandParameter="{Binding Id}">
                                     <Grid>
                                         <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                                            Stroke="Transparent" StrokeThickness="20" 
@@ -93,7 +94,8 @@
                                 </Button>
 
                                 <Button Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}">
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}"
+                                        CommandParameter="{Binding Id}">
                                     <Grid>
                                         <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                                            Stroke="Transparent" StrokeThickness="20" 
@@ -110,7 +112,8 @@
                                 </Button>
 
                                 <Button Margin="5" Width="200" Height="70" Style="{StaticResource btnStyleTransparent}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.Ready}">
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteOrder}"
+                                        CommandParameter="{Binding Id}">
                                     <Grid>
                                         <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                                            Stroke="Transparent" StrokeThickness="20" 

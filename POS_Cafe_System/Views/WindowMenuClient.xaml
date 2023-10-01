@@ -195,13 +195,15 @@
                                         Background="Green" Content="+" 
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                         Margin="10" DockPanel.Dock="Right"
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"/>
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"
+                                        CommandParameter="{Binding SelectedOrderItems}"/>
 
                                 <Button Background="Red" Content="-" 
                                         HorizontalAlignment="Right"
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                         Margin="10" DockPanel.Dock="Right"
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"/>
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"
+                                        CommandParameter="{Binding SelectedOrderItems}"/>
                             </DockPanel>
                         </DockPanel>
                     </DataTemplate>
