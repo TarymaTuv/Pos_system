@@ -68,14 +68,14 @@
             </ListBox>
 
             <!-- Корзина -->
-            <Grid Grid.Column="1" Background="LightGreen">
+            <Grid Grid.Column="1" Background="LightGreen" Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False" Background="Transparent"/>
+                <TextBlock Text="Корзина" Style="{StaticResource tblStyle}" HorizontalAlignment="Center"/>
                 <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}" Background="Transparent"
                          ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
@@ -84,7 +84,8 @@
                             <DockPanel LastChildFill="True">
                                 <StackPanel Width="150" Margin="5">
                                     <TextBlock Text="{Binding Name}"
-                                               Style="{StaticResource tblStyle}"/>
+                                               Style="{StaticResource tblStyle}"
+                                               FontSize="20"/>
                                     <TextBlock Text="{Binding Count}"
                                                Style="{StaticResource tblStyle}"/>
                                 </StackPanel>
@@ -98,7 +99,7 @@
                                             CommandParameter="{Binding Name}"/>
 
                                     <Button Background="Red" Content="-" 
-                                            HorizontalAlignment="Right"
+                                            FontSize="22" Foreground="White"
                                             Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                             Margin="10" DockPanel.Dock="Right"
                                             Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"

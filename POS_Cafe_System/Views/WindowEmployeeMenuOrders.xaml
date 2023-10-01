@@ -10,13 +10,19 @@
         x:Name="thisWindow">
 
     <Border BorderThickness="20" BorderBrush="ForestGreen">
-        <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
             <!-- Список заказов -->
-            <ListBox ItemsSource="{Binding Orders}" SelectedIndex="{Binding SelectedItem}"
+            <ListBox Grid.Row="1"
+                 ItemsSource="{Binding Orders}" SelectedIndex="{Binding SelectedItem}"
                  ScrollViewer.CanContentScroll="False"
                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                 Height="{Binding ElementName=thisWindow, Path=ActualHeight}">
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -67,6 +73,6 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
+        </Grid>
     </Border>
 </Window>
