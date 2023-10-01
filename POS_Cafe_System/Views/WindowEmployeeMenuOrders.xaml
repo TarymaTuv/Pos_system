@@ -44,7 +44,7 @@
     
     <StackPanel>
         <TextBlock Text="Заказы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
-        <ListBox ItemsSource="{Binding Orders}"
+        <ListBox ItemsSource="{Binding Orders}" SelectedIndex="{Binding SelectedItem}"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  Height="{Binding ElementName=thisWindow, Path=ActualHeight}">
             <ListBox.ItemTemplate>

@@ -36,53 +36,50 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
-        <Storyboard x:Key="storyDown" TargetName="hover">
+        <Storyboard x:Key="storyClick" TargetName="hover">
             <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
-                                            To="#3656FF" Duration="00:00:00.01"/>
+                                            To="Lime" Duration="00:00:00.01"/>
             <DoubleAnimation Storyboard.TargetProperty="Width" 
-                                                 From="0" To="300" Duration="00:00:01"/>
-        </Storyboard>
-
-        <Storyboard x:Key="storyUp" TargetName="hover">
-            <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
-                                            To="#E6EAFF" Duration="00:00:00.01"/>
+                                                 From="0" To="500" Duration="00:00:01"/>
         </Storyboard>
 
         <Storyboard x:Key="storyLeave" TargetName="hover">
-            <DoubleAnimation Storyboard.TargetProperty="Width"
-                                             To="0" Duration="00:00:00.01"/>
+            <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
+                                            To="Green" Duration="00:00:00.01"/>
         </Storyboard>
+        
+        <Storyboard x:Key="storyUp" TargetName="hover">
+            <ColorAnimation Storyboard.TargetProperty="Fill.(SolidColorBrush.Color)"
+                                            To="Green" Duration="00:00:00.01"/>
+        </Storyboard>
+
+
 
         <Storyboard x:Key="storyEnter" TargetName="hover">
             <DoubleAnimation Storyboard.TargetProperty="Width" 
-                                                 To="300" Duration="00:00:01"/>
+                                                 To="500" Duration="00:00:01"/>
         </Storyboard>
 
         <ControlTemplate x:Key="btnTemplate" TargetType="Button">
             <Border CornerRadius="5"
-                    BorderBrush="#3656FF"
+                    BorderBrush="Green"
                     BorderThickness="1"
-                    Background="Transparent"
+                    Background="Green"
                     Margin="2.5"
                     ClipToBounds="True">
-                <Grid Height="50">
+                <Grid Height="75">
                     <Rectangle Name="hover"
                                Width="0" 
-                               Height="25"
+                               Height="{TemplateBinding Height}"
                                RadiusX="25"
                                RadiusY="25"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center">
                         <Rectangle.Fill>
-                            <SolidColorBrush Color="#E6EAFF"/>
+                            <SolidColorBrush Color="Green"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Label Name="textContent" Content="{TemplateBinding Content}"
-                       HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Label.Foreground>
-                            <SolidColorBrush Color="Black"/>
-                        </Label.Foreground>
-                    </Label>
+                    <TextBlock Name="textContent" Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}"/>
                 </Grid>
             </Border>
             <ControlTemplate.Triggers>
@@ -94,8 +91,8 @@
                     <BeginStoryboard Storyboard="{StaticResource storyLeave}">
                     </BeginStoryboard>
                 </EventTrigger>
-                <EventTrigger RoutedEvent="PreviewMouseDown">
-                    <BeginStoryboard Storyboard="{StaticResource storyDown}">
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard Storyboard="{StaticResource storyClick}">
                     </BeginStoryboard>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="PreviewMouseUp">
@@ -228,7 +225,7 @@
                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <Button Command="{Binding CreateOrder}"
                     Template="{StaticResource btnTemplate}"
-                    Height="50" Width="300"
+                    Height="75" Width="300"
                     Content="Заказать">
             </Button>
         </StackPanel>
