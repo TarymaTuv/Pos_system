@@ -129,9 +129,33 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Style="{DynamicResource Item}" Margin="10" 
-                            Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddInOrder}">
-                    </Button>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="{Binding ImageBytes}"/>
+                        <DockPanel Grid.Row="1">
+                            <TextBlock Style="{DynamicResource tblStyle}"
+                                           Text="{Binding Name}"
+                                           Foreground="Black"
+                                           VerticalAlignment="Top"
+                                           DockPanel.Dock="Left"/>
+
+                            <TextBlock Style="{DynamicResource tblStyle}" 
+                                           Text="{Binding Price}"
+                                           Foreground="Black"
+                                           VerticalAlignment="Top"
+                                           TextAlignment="Right"
+                                           DockPanel.Dock="Right"/>
+                        </DockPanel>
+
+
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
