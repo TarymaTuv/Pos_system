@@ -78,16 +78,21 @@
         <Style x:Key="btnStyle" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
+                    <ControlTemplate TargetType="Button">
                         <Grid Width="{TemplateBinding Width}"
-                              Height="{TemplateBinding Height}">
-                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Transparent" StrokeThickness="20" Fill="{TemplateBinding Background}" RadiusX="20" RadiusY="20" />
+                                  Height="{TemplateBinding Height}">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                       Stroke="Transparent" StrokeThickness="20" 
+                                       Fill="{TemplateBinding Background}" 
+                                       RadiusX="20" RadiusY="20"/>
+                            <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource tblStyle}" 
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       FontSize="36"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Background" Value="Green"/>
-            <Setter Property="Foreground" Value="White"/>
         </Style>
     </Window.Resources>
 
@@ -122,7 +127,8 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Style="{DynamicResource Item}" Margin="10" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddInOrder}">
+                    <Button Style="{DynamicResource Item}" Margin="10" 
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddInOrder}">
                     </Button>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -151,14 +157,16 @@
                                 <Button x:Name="btnPlus"
                                         Background="Green" Content="+" 
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
-                                        FontStretch="Condensed" Foreground="White"
-                                        Margin="10" DockPanel.Dock="Right"/>
+                                        Margin="10" DockPanel.Dock="Right"
+                                        Style="{StaticResource btnStyle}"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"/>
 
                                 <Button Background="Red" Content="-" 
                                         HorizontalAlignment="Right"
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
-                                        FontStretch="Condensed" Foreground="White"
-                                        Margin="10" DockPanel.Dock="Right"/>
+                                        Style="{StaticResource btnStyle}"
+                                        Margin="10" DockPanel.Dock="Right"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.ReduceCount}"/>
                             </DockPanel>
                         </DockPanel>
                     </DataTemplate>
@@ -180,8 +188,12 @@
         
         <!-- Оформление заказа -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
-                    Grid.Row="1" Grid.Column="2">
-            <Button Style="{StaticResource btnStyle}" Content="Заказать"/>
+                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <Button Style="{StaticResource btnStyle}" 
+                    Content="Заказать" 
+                    Width="350" Height="100"
+                    Background="Green"
+                    Command="{Binding CreateOrder}"/>
         </StackPanel>
     </Grid>
 </Window>
