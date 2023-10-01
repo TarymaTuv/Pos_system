@@ -30,7 +30,7 @@
             <Style x:Key="tblStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="FontFamily" Value="Britannic Bold"/>
                 <Setter Property="FontSize" Value="24"/>
-                <Setter Property="Foreground" Value="Orange"/>
+                <Setter Property="Foreground" Value="Black"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
 

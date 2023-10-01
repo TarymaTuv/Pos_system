@@ -8,10 +8,10 @@
         Title="Меню заказов" Height="800" Width="1100"
         MinWidth="800" MinHeight="450">
 
-    <Grid>
+    <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="350"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -43,7 +43,7 @@
                             <RowDefinition Height="35"/>
                         </Grid.RowDefinitions>
 
-                        <Image Source="{Binding ImageBytes}"/>
+                        <Image Source="{Binding ImageBytes}" Stretch="Fill"/>
                         <DockPanel Grid.Row="1">
                             <TextBlock Style="{DynamicResource tblStyle}"
                                            Text="{Binding Name}"
@@ -66,20 +66,20 @@
         </ListBox>
 
         <!-- Корзина -->
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Background="LightGreen">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False"/>
-            <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}">
+            <Button Style="{StaticResource btnStyleCategory}" Content="Корзина" IsEnabled="False" Background="Transparent"/>
+            <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrderItems}" SelectedIndex="{Binding SelectedOrderItems}" Background="Transparent">
 
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="DockPanel">
                         <DockPanel LastChildFill="True">
-                            <StackPanel Width="150">
+                            <StackPanel Width="150" Margin="5">
                                 <TextBlock Text="{Binding Name}"
                                            Style="{StaticResource tblStyle}"/>
                                 <TextBlock Text="{Binding Count}"
@@ -87,7 +87,8 @@
                             </StackPanel>
                             <DockPanel HorizontalAlignment="Right" Width="130">
                                 <Button x:Name="btnPlus"
-                                        Background="Green" Content="+" 
+                                        Background="Green" Content="+"
+                                        FontSize="22" Foreground="White"
                                         Width="{Binding ElementName=btnPlus, Path=ActualHeight}"
                                         Margin="10" DockPanel.Dock="Right"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.AddCount}"
@@ -104,7 +105,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <DockPanel Grid.Row="2">
+            <DockPanel Grid.Row="2" Margin="10">
                 <TextBlock Style="{DynamicResource tblStyle}"
                                            Text="Итого"
                                            Foreground="Black"
@@ -122,7 +123,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <Button Command="{Binding CreateOrder}"
-                    Height="75" Width="300"
+                    Height="75" Width="350"
                     Template="{StaticResource btnTemplate}"
                     Content="Заказать">
             </Button>

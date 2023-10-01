@@ -7,79 +7,67 @@
         mc:Ignorable="d"
         Title="Статус-меню" Height="450" Width="800">
 
-    <Window.Resources>
-        <Style x:Key="tblStyle" TargetType="{x:Type TextBlock}">
-            <Setter Property="FontFamily" Value="Britannic Bold"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Foreground" Value="Orange"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
+    <Border BorderThickness="20" BorderBrush="ForestGreen">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Style x:Key="btnStyleTransparent" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="45"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-    </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Text="Готовятся" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
+            <TextBlock Grid.Column="1" Text="Готовы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
 
-        <TextBlock Grid.Column="0" Text="Готовятся" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
-        <TextBlock Grid.Column="1" Text="Готовы" Style="{StaticResource tblStyle}" TextAlignment="Center"/>
-
-        <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrdersInProgress}"
+            <ListBox Grid.Row="1" BorderThickness="0" ItemsSource="{Binding OrdersInProgress}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Focusable="False">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel ItemHeight="75" ItemWidth="100" IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel ItemHeight="75" ItemWidth="100" IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="100" Height="75">
-                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="100" Height="75">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                                Stroke="Transparent" StrokeThickness="20" 
                                Fill="Green" 
                                RadiusX="20" RadiusY="20"/>
-                        <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}" 
+                            <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}" 
                                Foreground="White"
                                HorizontalAlignment="Center"
                                FontSize="36"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-        <ListBox Grid.Row="1" Grid.Column="1" BorderThickness="0" ItemsSource="{Binding OrdersReady}"
+            <ListBox Grid.Row="1" Grid.Column="1" BorderThickness="0" ItemsSource="{Binding OrdersReady}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Focusable="False">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel ItemHeight="75" ItemWidth="100" IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel ItemHeight="75" ItemWidth="100" IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="100" Height="75">
-                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="100" Height="75">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                                Stroke="Transparent" StrokeThickness="20" 
                                Fill="Green" 
                                RadiusX="20" RadiusY="20"/>
-                        <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}" 
+                            <TextBlock Text="{Binding Id}" Style="{StaticResource tblStyle}" 
                                Foreground="White"
                                HorizontalAlignment="Center"
                                FontSize="36"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Border>
 </Window>
