@@ -41,26 +41,26 @@ namespace POS_Cafe_System.ViewModels
             {
                 Add();
             });
-            ReduceCount = new RelayCommand(o=>
+            ReduceCount = new RelayCommand(param =>
             {
-                if (SelectedOrderItems >= 0)
+                string name = param as string;
+                if (name != null)
                 {
-
-                    OrderItems[SelectedOrderItems].Count -= 1; //уменьшение количества выбранного товара в корзине
+                    OrderItems.Where(o => o.Name == name).First().Count--; //уменьшение количества выбранного товара в корзине
                                                                //если его кол-во = 0, то его надо убрать из корзины
                     if (OrderItems[SelectedOrderItems].Count == 0)
                     {
                         OrderItems.Remove(OrderItems[SelectedOrderItems]);
-                        Items[SelectedItem].Count--;
-                        CalculatePrice();
                     }
+                    CalculatePrice();
                 }
             });
-            AddCount= new RelayCommand(o=>
+            AddCount= new RelayCommand(param=>
             {
-                if (SelectedOrderItems >= 0)
+                string name = param as string;
+                if (name != null)
                 {
-                    OrderItems[SelectedOrderItems].Count += 1;//увеличение количества выбранного товара в корзине
+                    OrderItems.Where(o => o.Name == name).First().Count++; //увеличение количества выбранного товара в корзине                                             
                     CalculatePrice();
                 }
             });

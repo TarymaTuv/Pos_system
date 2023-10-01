@@ -21,11 +21,9 @@ namespace POS_Cafe_System.ViewModels
         public WindowEmployeeMenuOrdersViewModel()
         {
             //таймер для обновления заказов в реалтайме
-
-            //таймер для обновления заказов в реалтайме
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Tick += Update;
-            timer.Interval = new TimeSpan(0,0,2);
+            timer.Interval = new TimeSpan(0,0,1);
             timer.Start();
 
             Orders.AddRange(WorkerDB.ReadAllOrder());

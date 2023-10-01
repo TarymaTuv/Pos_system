@@ -102,7 +102,6 @@ namespace POS_Cafe_System.Commands
 
                         //создаем заказ
                         Order order = new Order(itemsOrder, id);
-                        Console.WriteLine(itemsOrder.Count + " Itemsss");
                         order.IsPay = isPay;
                         order.IsReady = isReady;
                         order.Price = price;
@@ -159,8 +158,7 @@ namespace POS_Cafe_System.Commands
                 command.Parameters.AddWithValue("@price", order.Price);
                 command.Parameters.AddWithValue("@orderItems", orderItemsString); 
                 
-                int number = command.ExecuteNonQuery();
-                Console.WriteLine($"Добавлено объектов: {number}");
+                command.ExecuteNonQuery();
             }
 
             return true;
