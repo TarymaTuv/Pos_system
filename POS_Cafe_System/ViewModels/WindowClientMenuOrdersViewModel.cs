@@ -64,27 +64,6 @@ namespace POS_Cafe_System.ViewModels
                 CalculatePrice();
             });
         }
-        private void CalculatePrice()
-        {
-            double price = 0;
-            foreach(var item in OrderItems)
-            {
-                price += item.Price * item.Count;
-            }
-            PriceOrder = price.ToString();
-        }
-        private void Add()
-        {
-            if (SelectedItem >= 0)
-            {
-                if (!OrderItems.Contains(Items[SelectedItem]))
-                {
-                    OrderItems.Add((Items[SelectedItem]));
-                }
-                OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count += 1;
-                CalculatePrice();
-            }
-        }
 
         public ICommand CreateOrder { get; set; }
         public ICommand AddInOrder { get; set; }
@@ -114,5 +93,33 @@ namespace POS_Cafe_System.ViewModels
         public int SelectedOrderItems { get; set; } = 0;// то что будет в корзине, выбранный предмет
         [Reactive]
         public string PriceOrder { get; set; } = "0"; //цена заказа
+
+        /// <summary>
+        /// Высчитывание итоговой цены
+        /// </summary>
+        private void CalculatePrice()
+        {
+            double price = 0;
+            foreach (var item in OrderItems)
+            {
+                price += item.Price * item.Count;
+            }
+            PriceOrder = price.ToString();
+        }
+        /// <summary>
+        /// добавление товара в корзину, если же есть, то добавляет кол-во
+        /// </summary>
+        private void Add()
+        {
+            if (SelectedItem >= 0)
+            {
+                if (!OrderItems.Contains(Items[SelectedItem]))
+                {
+                    OrderItems.Add((Items[SelectedItem]));
+                }
+                OrderItems.Where(i => i.Id == Items[SelectedItem].Id).First().Count += 1;
+                CalculatePrice();
+            }
+        }
     }
 }
