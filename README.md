@@ -18,3 +18,11 @@
 4. База данных продуктов
 ![](https://sun9-49.userapi.com/impg/ObL7rZv6HJn9YX-Z8EWKmAPJ8X6aVvqvlUHsJw/gfAUTV8M9Z4.jpg?size=1255x807&quality=95&sign=020044bf9074ec2b142728203e08ec26&type=album)
 :ok_hand:
+---
+# Как запустить данный проект:
+1. Скачиваете Microsoft VS 2022/2019/2017 один из этих IDE
+2. В меню установщика нажимаете на этот пункт
+3. ![](https://sun9-6.userapi.com/impg/TckIh-5wdvvIFFjvANjuiInv9-fo2l51wOB61g/7ZQET1Fmzd4.jpg?size=1532x772&quality=95&sign=50940a1d91dd3e7c5527eac627a0e2bd&type=album)
+4. Скачиваете из репозитория данный проект и нажимаете на Pos_Cafe_system.sln
+5. запускаете проект.
+6. Все.
