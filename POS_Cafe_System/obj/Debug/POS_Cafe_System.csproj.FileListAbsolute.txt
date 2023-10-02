@@ -1,0 +1,119 @@
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\POS_Cafe_System.exe.config
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\POS_Cafe_System.exe
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\POS_Cafe_System.pdb
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\DynamicData.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.Fody.Helpers.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\Splat.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\SQLitePCLRaw.core.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Buffers.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Memory.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Reactive.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\DynamicData.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.Fody.Helpers.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\Splat.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Buffers.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Memory.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Reactive.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.AssemblyReference.cache
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.SuggestedBindingRedirects.cache
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\MainWindow.g.cs
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowEmployeeMenuOrders.g.cs
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowReadinessOrder.g.cs
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\App.g.cs
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System_MarkupCompile.cache
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System_MarkupCompile.lref
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\MainWindow.baml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowEmployeeMenuOrders.baml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowReadinessOrder.baml
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.g.resources
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.Properties.Resources.resources
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.GenerateResource.cache
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.CoreCompileInputs.cache
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.CopyComplete
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.exe
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.pdb
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\Resources\CafeDB.db
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\Resources\no_image.png
+C:\Users\VshivayaGnida\Source\Repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System_Content.g.cs
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.dll
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.dll
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.xml
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.xml
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.Fody.CopyLocal.cache
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowMenuClient.g.cs
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowMenuClient.baml
+C:\Users\VshivayaGnida\source\repos\POS_Cafe_System\POS_Cafe_System\obj\Debug\App.baml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\Resources\no_image.png
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\Resources\CafeDB.db
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\POS_Cafe_System.exe.config
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\POS_Cafe_System.exe
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\POS_Cafe_System.pdb
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\DynamicData.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.SqlServer.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.Fody.Helpers.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\Splat.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\SQLitePCLRaw.core.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Buffers.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Memory.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Numerics.Vectors.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Reactive.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\DynamicData.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\EntityFramework.SqlServer.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\ReactiveUI.Fody.Helpers.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\Splat.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Buffers.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Data.SQLite.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Memory.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Numerics.Vectors.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Reactive.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.AssemblyReference.cache
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\MainWindow.g.cs
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowMenuClient.g.cs
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowEmployeeMenuOrders.g.cs
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowReadinessOrder.g.cs
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\App.g.cs
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System_Content.g.cs
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System_MarkupCompile.cache
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System_MarkupCompile.lref
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\App.baml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\MainWindow.baml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowMenuClient.baml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowEmployeeMenuOrders.baml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\Views\WindowReadinessOrder.baml
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.g.resources
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.Properties.Resources.resources
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.GenerateResource.cache
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.CoreCompileInputs.cache
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.Fody.CopyLocal.cache
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.Fody.RuntimeCopyLocal.cache
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.csproj.CopyComplete
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.exe
+D:\Program Files\POS_Cafe_System\POS_Cafe_System\POS_Cafe_System\obj\Debug\POS_Cafe_System.pdb
